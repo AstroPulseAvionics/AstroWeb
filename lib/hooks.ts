@@ -5,7 +5,7 @@ import {links} from "@/lib/data";
 
 
 
-export type SectionName = (typeof links)[number]["name"];
+export type SectionName = (typeof links)[number]["name"] | "Home";
 
 export function useSectionInView(sectionName: SectionName, threshold = 0.75) {
     const { ref, inView } = useInView({

@@ -3,12 +3,7 @@ import { MdRocketLaunch } from "react-icons/md";
 
 // (other icon imports removed)
 export const githubLink = "https://github.com/AstroPulseAvionics"
-export const links = [
-    // {
-    //     name: "Home",
-    //     hash: "#home",
-    // },
-    {
+export const links = [{
         name: "About",
         hash: "#about",
     },
