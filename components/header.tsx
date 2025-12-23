@@ -58,9 +58,6 @@ export default function Header() {
                                 priority
                             />
                         </span>
-                        {/* <span className="text-xs font-semibold uppercase tracking-[0.2em] sm:text-sm">
-                            Parth Patel
-                        </span> */}
                     </Link>
 
                     <ul className="hidden flex-wrap items-center justify-end gap-3 text-[0.78rem] font-medium text-neutral-300 sm:flex sm:gap-6 sm:text-[0.9rem]">
