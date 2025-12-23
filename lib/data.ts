@@ -33,6 +33,7 @@ export const experiencesData = [
             "Reviewed theory and selected the Hall Effect Thruster architecture.",
         icon: React.createElement(MdRocketLaunch),
         date: "Sept 2025",
+        isCurrent: false,
     },
     {
         name: "Conceptual Design",
@@ -41,6 +42,7 @@ export const experiencesData = [
             "Defined subsystems and initial architecture.",
         icon: React.createElement(MdRocketLaunch),
         date: "Sept - Oct 2025",
+        isCurrent: false,
     },
     {
         name: "Design & Simulation",
@@ -58,6 +60,7 @@ export const experiencesData = [
             "Prototype via 3D printing; machining with lathe/mill, CNC, water-jet, furnace, metal 3D print.",
         icon: React.createElement(MdRocketLaunch),
         date: "Jan – Mar 2026",
+        isCurrent: false,
     },
     {
         name: "Testing",
@@ -66,5 +69,6 @@ export const experiencesData = [
             "Subsystem tests (Faraday cups, Gauss probes), then vacuum-chamber system testing.",
         icon: React.createElement(MdRocketLaunch),
         date: "Mar – Apr 2026",
+        isCurrent: false,
     },
 ] as const;
