@@ -34,7 +34,7 @@ export default function About() {
                         <p className="text-md font-semibold uppercase tracking-[0.35em] text-neutral-300 sm:text-center">
                             What we’re building
                         </p>
-                        <p className="text-left text-neutral-300">
+                        <p className="text-justify text-neutral-300">
                             Developed at the University of Calgary, AstroPulse is an undergraduate led electric propulsion project developing and testing a Hall-effect thruster in Canada.
                             The project is focused on designing a fully electric integrated propulsion system, bringing advanced space propulsion into a hands on engineering environment.
                         </p>
