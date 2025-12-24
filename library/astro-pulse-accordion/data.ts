@@ -1,4 +1,4 @@
-﻿export type AccordionItemType = {
+export type AccordionItemType = {
   id: string;
   title: string;
   description: string;
@@ -41,7 +41,7 @@ export const data: AccordionItemType[] = [
     title: "Injector",
     description:
       "Propellant delivery through a swirl injector designed for a controlled mass flow.",
-    imagePath: "/images/accordion/Swirl%20Injector.png",
+    imagePath: "/images/accordion/Injector%20Simulation.gif",
     mediaSize: "300px",
     mediaSizeLg: "300px",
     mediaMinSize: "260px",
