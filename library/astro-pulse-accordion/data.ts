@@ -15,14 +15,14 @@ export const data: AccordionItemType[] = [
     id: "thruster-design",
     title: "Thruster Design",
     description:
-      "System-level architecture defining the discharge chamber, magnetic circuit, and propellant path.",
+      "System level architecture defining the discharge chamber, magnetic circuit, and propellant path.",
     imagePath: "/images/accordion/Hall%20Thruster%20Concept.png",
   },
   {
     id: "cathode",
     title: "Cathode",
     description:
-      "Electron emission system optimized for stable discharge and long-life operation.",
+      "Electron emission system to provide electrons for ionization and neutralization.",
     imagePath: "/images/accordion/Cathode.png",
     mediaSize: "420px",
     mediaSizeLg: "640px",
@@ -33,14 +33,14 @@ export const data: AccordionItemType[] = [
     id: "magnetic-field-design",
     title: "Magnetic Field Design",
     description:
-      "Field geometry tuned to maximize ionization efficiency and plume stability.",
+      "Field geometry tuned to maximize ionization efficiency.",
     imagePath: "/images/accordion/Magnetic%20Circuit.png",
   },
   {
     id: "injector",
     title: "Injector",
     description:
-      "Propellant delivery designed for uniform distribution and controlled mass flow.",
+      "Propellant delivery through a swirl injector designed for a controlled mass flow.",
     imagePath: "/images/accordion/Swirl%20Injector.png",
     mediaSize: "300px",
     mediaSizeLg: "300px",
@@ -51,14 +51,14 @@ export const data: AccordionItemType[] = [
     id: "power-processing-unit",
     title: "Power Processing Unit",
     description:
-      "Power conversion architecture for efficient, reliable thruster operation.",
+      "High voltage power conversion architecture for efficient, reliable thruster operation.",
     imagePath: "/images/accordion/Electrical%20Sim.png",
   },
   {
     id: "orbital-mechanics-simulator",
     title: "Orbital Mechanics Simulator",
     description:
-      "Simulation environment to validate maneuvers and long-duration mission profiles.",
+      "Simulation environment to validate maneuvers and long duration mission profiles.",
     imagePath: "/images/accordion/Orbital%20Mech%20Sim.mp4",
   },
 ] as const;

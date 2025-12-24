@@ -124,9 +124,9 @@ export function AstroPulseAccordion({
     <MotionConfig
       transition={{
         type: "spring",
-        stiffness: 500,
-        damping: 200,
-        mass: 1.0,
+        stiffness: 400,
+        damping: 150,
+        mass: 40,
       }}
     >
       {/* <div className={rootClassName} ref={containerRef}> */}
