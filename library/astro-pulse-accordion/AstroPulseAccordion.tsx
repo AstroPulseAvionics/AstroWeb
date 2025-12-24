@@ -132,7 +132,7 @@ export function AstroPulseAccordion({
       {/* <div className={rootClassName} ref={containerRef}> */}
         {/* <div className="w-full max-w-screen-xl px-8 md:px-10 pt-4"> */}
         <div className="w-full max-w-screen-xl">
-          <div className="relative w-full h-[70vh] rounded-[32px] bg-black overflow-hidden shadow-custom flex flex-col">
+          <div className="relative w-full h-auto lg:h-[70vh] rounded-[32px] bg-black overflow-hidden shadow-custom flex flex-col">
             <div className="relative z-20">
               <CloseButton value={value} setValue={handleValueChange} />
             </div>
@@ -416,7 +416,7 @@ function AccordionItem({ item, isOpen, setValue, value }: AccordionItemProps) {
                 }}
                 className={`${
                   isCompact ? "w-full" : "w-[423px]"
-                } h-full -mt-14 flex flex-col justify-end`}
+                } h-auto lg:h-full mt-0 lg:-mt-14 flex flex-col justify-start lg:justify-end`}
                 initial="closed"
                 animate="open"
                 exit="closed"
@@ -443,7 +443,7 @@ function AccordionItem({ item, isOpen, setValue, value }: AccordionItemProps) {
                       },
                     },
                   }}
-                  className="h-full flex flex-col justify-between"
+                  className="h-auto lg:h-full flex flex-col justify-start lg:justify-between"
                 >
                   <p className="p-[22px] text-[17px] tracking-[-0.022em]">
                     <span className="font-semibold">{item.title} </span>
