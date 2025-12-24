@@ -28,10 +28,10 @@ export default function About() {
             id={"about"}
         >
             <div className="mx-auto max-w-6xl px-6 sm:px-10 lg:px-16">
-                <SectionHeading eyebrow="About" title="About Us" />
+                <SectionHeading eyebrow="About" title="About Us" className="sm:text-center" />
                 <div className="mt-6 flex flex-col gap-6 items-center">
                     <div className="text-left flex flex-col gap-6 max-w-xl align-middle items-center">
-                        <p className="text-md font-semibold uppercase tracking-[0.35em] text-neutral-300">
+                        <p className="text-md font-semibold uppercase tracking-[0.35em] text-neutral-300 sm:text-center">
                             What we’re building
                         </p>
                         <p className="text-left text-neutral-300">
@@ -39,7 +39,7 @@ export default function About() {
                             The project is focused on designing a fully electric integrated propulsion system, bringing advanced space propulsion into a hands on engineering environment.
                         </p>
 
-                        <p className="text-md font-semibold uppercase tracking-[0.35em] text-neutral-300 ">
+                        <p className="text-md font-semibold uppercase tracking-[0.35em] text-neutral-300 sm:text-center ">
                             How we’re doing it
                         </p>
                         <p className="text-justify text-neutral-300">
@@ -47,7 +47,7 @@ export default function About() {
                             
                         </p>
 
-                        <p className="text-md font-semibold uppercase tracking-[0.35em] text-neutral-300">
+                        <p className="text-md font-semibold uppercase tracking-[0.35em] text-neutral-300 sm:text-center">
                             Why It Matters
                         </p>
                         <p className="text-justify text-neutral-300 ">
