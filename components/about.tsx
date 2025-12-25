@@ -34,7 +34,7 @@ export default function About() {
                         <p className="text-md font-semibold uppercase tracking-[0.35em] text-neutral-300 sm:text-center">
                             What we’re building
                         </p>
-                        <p className="text-justify text-neutral-300">
+                        <p className="text-left text-neutral-300">
                             Developed at the University of Calgary, AstroPulse is an undergraduate led electric propulsion project developing and testing a Hall Effect Thruster in Canada.
                             The project is focused on designing a fully integrated electric propulsion system, bringing advanced space propulsion into a hands on engineering environment.
                         </p>
@@ -42,7 +42,7 @@ export default function About() {
                         <p className="text-md font-semibold uppercase tracking-[0.35em] text-neutral-300 sm:text-center ">
                             How we’re doing it
                         </p>
-                        <p className="text-justify text-neutral-300">
+                        <p className="text-left text-neutral-300">
                             AstroPulse combines mechanical, electrical, and software engineering to address a technology typically developed by specialized industry and national space agencies. The work spans thermal and fluid behavior, magnetic design, materials selection, and manufacturing, alongside power electronics, embedded systems, and control software. Design decisions are driven by first principles, supported by established literature, and validated through simulation and experimental testing.
                             
                         </p>
@@ -50,7 +50,7 @@ export default function About() {
                         <p className="text-md font-semibold uppercase tracking-[0.35em] text-neutral-300 sm:text-center">
                             Why It Matters
                         </p>
-                        <p className="text-justify text-neutral-300 ">
+                        <p className="text-left text-neutral-300 ">
                             Emerging satellite applications are expanding opportunities in space exploration, Earth observation, and communications. Onboard propulsion systems enable precise positioning, formation control and debris avoidance, supporting more ambitious missions for organizations such as Starlink, Spaceium and AstroForge.
                             
                             {/* By grounding the design in established literature, validating
@@ -59,7 +59,7 @@ export default function About() {
                             demonstrating what disciplined, hands on engineering can achieve at the undergraduate
                             level. */}
                         </p>
-                        <p className="text-justify text-neutral-300 ">
+                        <p className="text-left text-neutral-300 ">
                             By taking on this challenge, we aim to lower the barrier to entry for electric propulsion technology and demonstrate what is possible when undergraduate teams are empowered to build beyond conventional limits. This represents unexplored territory for our team and our university.
                         </p>
                     </div>
