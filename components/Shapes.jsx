@@ -40,7 +40,7 @@ export function Shapes() {
 
 function Rocket(props) {
   // IMPORTANT: file must be in /public so this path works
-  const { scene } = useGLTF("/test.glb");
+  const { scene } = useGLTF("/test-v2.glb");
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
