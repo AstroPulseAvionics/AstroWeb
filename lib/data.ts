@@ -16,6 +16,10 @@ export const links = [{
         hash: "#projectTimeline",
     },
     {
+        name: "Part by Part",
+        hash: "#part-by-part",
+    },
+    {
         name: "Team",
         hash: "#team",
     },

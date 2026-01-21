@@ -1,0 +1,189 @@
+[
+  {
+    "name": "Anode Ring Isolator",
+    "price": "70",
+    "description": "Alumina Ceramic",
+    "funded": 50,
+    "image": "/images/parts/anode-ring-isolator.png"
+  },
+  {
+    "name": "Anode Ring Top",
+    "price": "1",
+    "description": "SS 316",
+    "funded": 1
+  },
+  {
+    "name": "Anode Ring Bottom",
+    "price": "1",
+    "description": "SS 316",
+    "funded": 1
+  },
+  {
+    "name": "Feed Line",
+    "price": "1",
+    "description": "SS 316",
+    "funded": 1
+  },
+  {
+    "name": "Inner Insulation Tube",
+    "price": "35",
+    "description": "Alumina Ceramic",
+    "funded": 0
+  },
+  {
+    "name": "Top Insulative Spacer",
+    "price": "70",
+    "description": "Alumina Ceramic",
+    "funded": 0
+  },
+  {
+    "name": "Keeper Spacer",
+    "price": "70",
+    "description": "Alumina Ceramic",
+    "funded": 0
+  },
+  {
+    "name": "Bottom Insulation Plate",
+    "price": "70",
+    "description": "Alumina Ceramic",
+    "funded": 0
+  },
+  {
+    "name": "Keeper Wire Insulation Plate",
+    "price": "70",
+    "description": "Alumina Ceramic",
+    "funded": 0
+  },
+  {
+    "name": "Bottom Insulation Tube",
+    "price": "70",
+    "description": "Alumina Ceramic",
+    "funded": 0
+  },
+  {
+    "name": "Keeper Tube Spacer",
+    "price": "70",
+    "description": "Alumina Ceramic",
+    "funded": 0
+  },
+  {
+    "name": "Cathode Keeper",
+    "price": "130",
+    "description": "Graphite",
+    "funded": 0
+  },
+  {
+    "name": "Orifice Plate",
+    "price": "30",
+    "description": "Graphite",
+    "funded": 0
+  },
+  {
+    "name": "Cathode Tube",
+    "price": "70",
+    "description": "Graphite",
+    "funded": 0
+  },
+  {
+    "name": "Thermoionic Emitter",
+    "price": "280",
+    "description": "Lanthanum Hexaboride",
+    "funded": 0
+  },
+  {
+    "name": "Bottom Mounting Plate",
+    "price": "1",
+    "description": "SS 316",
+    "funded": 1
+  },
+  {
+    "name": "Cathode Tube Adapter",
+    "price": "20",
+    "description": "SS 316",
+    "funded": 20
+  },
+  {
+    "name": "Keeper Insulation Tube",
+    "price": "10",
+    "description": "Alumina Ceramic",
+    "funded": 0
+  },
+  {
+    "name": "Inner Pole",
+    "price": "180",
+    "description": "SS 316",
+    "funded": 180
+  },
+  {
+    "name": "Outer Focusing Pole",
+    "price": "30",
+    "description": "SS 316",
+    "funded": 30
+  },
+  {
+    "name": "Outer Core Ring",
+    "price": "60",
+    "description": "SS 316",
+    "funded": 60
+  },
+  {
+    "name": "Inner Magnetic Shield",
+    "price": "20",
+    "description": "SS 316",
+    "funded": 20
+  },
+  {
+    "name": "Outer Magnetic Shield",
+    "price": "20",
+    "description": "SS 316",
+    "funded": 20
+  },
+  {
+    "name": "Square Magnet Holder",
+    "price": "1",
+    "description": "SS 316",
+    "funded": 1
+  },
+  {
+    "name": "Magnetic Shield Retaining Ring",
+    "price": "1",
+    "description": "SS 316",
+    "funded": 1
+  },
+  {
+    "name": "Inner Magnetic Shield Retaining Ring",
+    "price": "1",
+    "description": "SS 316",
+    "funded": 1
+  },
+  {
+    "name": "Ceramic Top Cover",
+    "price": "70",
+    "description": "Alumina Ceramic",
+    "funded": 0
+  },
+  {
+    "name": "Copper Mounting Plate",
+    "price": "1",
+    "description": "Copper",
+    "funded": 1
+  },
+  {
+    "name": "Inner Channel Wall",
+    "price": "100",
+    "description": "SS 316",
+    "funded": 100
+  },
+  {
+    "name": "Outer Channel Wall",
+    "price": "100",
+    "description": "SS 316",
+    "funded": 100
+  },
+  {
+    "name": "Thruster Cover",
+    "price": "100",
+    "description": "SS 316",
+    "funded": 100
+  }
+]
