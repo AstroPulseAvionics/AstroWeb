@@ -3,187 +3,377 @@
     "name": "Anode Ring Isolator",
     "price": "70",
     "description": "Alumina Ceramic",
-    "funded": 50,
+    "funded": 0,
     "image": "/images/parts/anode-ring-isolator.png"
   },
   {
-    "name": "Anode Ring Top",
-    "price": "1",
+    "name": "Anode Ring",
+    "price": "40",
     "description": "SS 316",
-    "funded": 1
-  },
-  {
-    "name": "Anode Ring Bottom",
-    "price": "1",
-    "description": "SS 316",
-    "funded": 1
-  },
-  {
-    "name": "Feed Line",
-    "price": "1",
-    "description": "SS 316",
-    "funded": 1
+    "funded": 40,
+    "image": "/images/parts/anode-ring.png"
   },
   {
     "name": "Inner Insulation Tube",
     "price": "35",
     "description": "Alumina Ceramic",
-    "funded": 0
+    "funded": 0,
+    "image": "/images/parts/inner-insulation-tube.png"
   },
   {
     "name": "Top Insulative Spacer",
     "price": "70",
     "description": "Alumina Ceramic",
-    "funded": 0
+    "funded": 0,
+    "image": "/images/parts/top-insulative-spacer.png"
   },
   {
     "name": "Keeper Spacer",
     "price": "70",
     "description": "Alumina Ceramic",
-    "funded": 0
+    "funded": 0,
+    "image": "/images/parts/keeper-spacer.png"
   },
   {
     "name": "Bottom Insulation Plate",
     "price": "70",
     "description": "Alumina Ceramic",
-    "funded": 0
+    "funded": 0,
+    "image": "/images/parts/bottom-insulation-plate.png"
   },
   {
     "name": "Keeper Wire Insulation Plate",
     "price": "70",
     "description": "Alumina Ceramic",
-    "funded": 0
+    "funded": 0,
+    "image": "/images/parts/keeper-wire-insulation-plate.png"
   },
   {
     "name": "Bottom Insulation Tube",
     "price": "70",
     "description": "Alumina Ceramic",
-    "funded": 0
+    "funded": 0,
+    "image": "/images/parts/bottom-insulation-tube.png"
   },
   {
     "name": "Keeper Tube Spacer",
     "price": "70",
     "description": "Alumina Ceramic",
-    "funded": 0
+    "funded": 0,
+    "image": "/images/parts/keeper-tube-spacer.png"
   },
   {
     "name": "Cathode Keeper",
     "price": "130",
     "description": "Graphite",
-    "funded": 0
+    "funded": 0,
+    "image": "/images/parts/cathode-keeper.png"
   },
   {
     "name": "Orifice Plate",
     "price": "30",
     "description": "Graphite",
-    "funded": 0
+    "funded": 0,
+    "image": "/images/parts/orifice-plate.png"
   },
   {
     "name": "Cathode Tube",
     "price": "70",
     "description": "Graphite",
-    "funded": 0
+    "funded": 0,
+    "image": "/images/parts/cathode-tube.png"
   },
   {
     "name": "Thermoionic Emitter",
-    "price": "280",
+    "price": "240",
     "description": "Lanthanum Hexaboride",
-    "funded": 0
+    "funded": 0,
+    "image": "/images/parts/thermionic-emitter.png"
   },
   {
     "name": "Bottom Mounting Plate",
-    "price": "1",
+    "price": "25",
     "description": "SS 316",
-    "funded": 1
+    "funded": 25,
+    "image": "/images/parts/bottom-mounting-plate.png"
   },
   {
     "name": "Cathode Tube Adapter",
     "price": "20",
     "description": "SS 316",
-    "funded": 20
+    "funded": 20,
+    "image": "/images/parts/cathode-tube-adapter.png"
   },
   {
     "name": "Keeper Insulation Tube",
     "price": "10",
     "description": "Alumina Ceramic",
+    "funded": 0,
+    "image": "/images/parts/keeper-insulation-tube.png"
+  },
+  {
+    "name": "Heater Wire",
+    "price": "115",
+    "description": "",
+    "funded": 0,
+    "image": "/images/parts/heater-coil.png"
+  },
+  {
+    "name": "Heater Wire Sleeve",
+    "price": "60",
+    "description": "",
     "funded": 0
   },
   {
     "name": "Inner Pole",
     "price": "180",
-    "description": "SS 316",
-    "funded": 180
+    "description": "1018 Steel",
+    "funded": 180,
+    "image": "/images/parts/inner-pole.png"
   },
   {
     "name": "Outer Focusing Pole",
     "price": "30",
-    "description": "SS 316",
-    "funded": 30
+    "description": "1018 Steel",
+    "funded": 30,
+    "image": "/images/parts/outer-focusing-pole.png"
   },
   {
     "name": "Outer Core Ring",
     "price": "60",
-    "description": "SS 316",
-    "funded": 60
+    "description": "1018 Steel",
+    "funded": 60,
+    "image": "/images/parts/outer-core-ring.png"
   },
   {
     "name": "Inner Magnetic Shield",
     "price": "20",
-    "description": "SS 316",
-    "funded": 20
+    "description": "1018 Steel",
+    "funded": 20,
+    "image": "/images/parts/inner-magnetic-shield.png"
   },
   {
     "name": "Outer Magnetic Shield",
     "price": "20",
-    "description": "SS 316",
-    "funded": 20
+    "description": "1018 Steel",
+    "funded": 20,
+    "image": "/images/parts/outer-magnetic-shield.png"
   },
   {
     "name": "Square Magnet Holder",
-    "price": "1",
+    "price": "20",
     "description": "SS 316",
-    "funded": 1
+    "funded": 20,
+    "image": "/images/parts/square-magnet-holder.png"
   },
   {
     "name": "Magnetic Shield Retaining Ring",
-    "price": "1",
+    "price": "25",
     "description": "SS 316",
-    "funded": 1
+    "funded": 25,
+    "image": "/images/parts/magnetic-shield-retaining-ring.png"
   },
   {
     "name": "Inner Magnetic Shield Retaining Ring",
-    "price": "1",
+    "price": "20",
     "description": "SS 316",
-    "funded": 1
+    "funded": 20,
+    "image": "/images/parts/inner-magnetic-shield-retaining-ring.png"
   },
   {
     "name": "Ceramic Top Cover",
     "price": "70",
     "description": "Alumina Ceramic",
-    "funded": 0
+    "funded": 0,
+    "image": "/images/parts/ceramic-top-cover.png"
   },
   {
     "name": "Copper Mounting Plate",
     "price": "1",
     "description": "Copper",
-    "funded": 1
+    "funded": 1,
+    "image": "/images/parts/copper-mounting-plate.png"
   },
   {
     "name": "Inner Channel Wall",
-    "price": "100",
+    "price": "25",
     "description": "SS 316",
-    "funded": 100
+    "funded": 25,
+    "image": "/images/parts/inner-wall.png"
   },
   {
     "name": "Outer Channel Wall",
-    "price": "100",
+    "price": "25",
     "description": "SS 316",
-    "funded": 100
+    "funded": 25,
+    "image": "/images/parts/outer-channel-wall.png"
   },
   {
     "name": "Thruster Cover",
-    "price": "100",
+    "price": "25",
     "description": "SS 316",
-    "funded": 100
+    "funded": 25,
+    "image": "/images/parts/thruster-cover.png"
+  },
+  {
+    "name": "PPU PCB",
+    "price": "300",
+    "description": "Electric Circuit",
+    "funded": 0,
+    "image": "/images/parts/pcb.png"
+  },
+  {
+    "name": "Transformer",
+    "price": "150",
+    "description": "Electric Circuit",
+    "funded": 0,
+    "image": "/images/parts/transformer.png"
+  },
+  {
+    "name": "Electrical Components",
+    "price": "50",
+    "description": "",
+    "funded": 0,
+    "image": "/images/parts/electrical-components.png"
+  },
+  {
+    "name": "Mass Flow Controllers",
+    "price": "300",
+    "description": "Testing Equipment",
+    "funded": 0,
+    "image": "/images/parts/mass-flow-controllers.png"
+  },
+  {
+    "name": "Conflat Flanges",
+    "price": "400",
+    "description": "Testing Equipment",
+    "funded": 0,
+    "image": "/images/parts/conflat-flanges.png"
+  },
+  {
+    "name": "Welding Vaccum Flange",
+    "price": "100",
+    "description": "Testing Equipment",
+    "funded": 0,
+    "image": "/images/parts/welding-vacuum-flange.png"
+  },
+  {
+    "name": "Ceramabond Alumina Adhesive",
+    "price": "170",
+    "description": "",
+    "funded": 0,
+    "image": "/images/parts/alumina-adhesive.png"
+  },
+  {
+    "name": "Ceramabond Graphite Adhesive",
+    "price": "190",
+    "description": "",
+    "funded": 0,
+    "image": "/images/parts/alumina-adhesive.png"
+  },
+  {
+    "name": "Boron Nitride Paste",
+    "price": "85",
+    "description": "",
+    "funded": 0,
+    "image": "/images/parts/boron-nitride-paste.png"
+  },
+  {
+    "name": "Permanent Magnets",
+    "price": "100",
+    "description": "",
+    "funded": 0,
+    "image": "/images/parts/permanent-square-magnets.png"
+  },
+  {
+    "name": "2 Reducing Union Tube Fittings",
+    "price": "60",
+    "description": "Swagelok Plumbing Equipment",
+    "funded": 0,
+    "image": "/images/parts/reducing-union.png"
+  },
+  {
+    "name": "Dielectric Union Tube Fitting",
+    "price": "210",
+    "description": "Swagelok Plumbing Equipment",
+    "funded": 0,
+    "image": "/images/parts/dielectric-union.png"
+  },
+  {
+    "name": "Union Cross Tube Fitting",
+    "price": "110",
+    "description": "Swagelok Plumbing Equipment",
+    "funded": 0,
+    "image": "/images/parts/union-cross.png"
+  },
+  {
+    "name": "Dielectric Union Tube Fitting",
+    "price": "210",
+    "description": "Swagelok Plumbing Equipment",
+    "funded": 0,
+    "image": "/images/parts/dielectric-union.png"
+  },
+  {
+    "name": "4 Union Tube Fittings",
+    "price": "110",
+    "description": "Swagelok Plumbing Equipment",
+    "funded": 0,
+    "image": "/images/parts/union.png"
+  },
+  {
+    "name": "1/4 in. Male Connector Tube Fitting",
+    "price": "20",
+    "description": "Swagelok Plumbing Equipment",
+    "funded": 0,
+    "image": "/images/parts/big-male-connector.png"
+  },
+  {
+    "name": "1/8 in. Male Connector Tube Fitting",
+    "price": "20",
+    "description": "Swagelok Plumbing Equipment",
+    "funded": 0,
+    "image": "/images/parts/big-male-connector.png"
+  },
+  {
+    "name": "2 Tee Pipe Fittings",
+    "price": "130",
+    "description": "Swagelok Plumbing Equipment",
+    "funded": 0,
+    "image": "/images/parts/2tee.png"
+  },
+  {
+    "name": "4 Hex Long Nipple Pipe Fittings",
+    "price": "155",
+    "description": "Swagelok Plumbing Equipment",
+    "funded": 0,
+    "image": "/images/parts/hex-long-nipple.png"
+  },
+  {
+    "name": "Welding Gas Hose",
+    "price": "30",
+    "description": "McMaster Carr Plumbing Equipment",
+    "funded": 0,
+    "image": "/images/parts/welding-gas-hose.png"
+  },
+  {
+    "name": "1/8 in. Tubing",
+    "price": "70",
+    "description": "McMaster Carr Plumbing Equipment",
+    "funded": 0,
+    "image": "/images/parts/8-tubing.png"
+  },
+  {
+    "name": "1/4 in. Tubing",
+    "price": "45",
+    "description": "McMaster Carr Plumbing Equipment",
+    "funded": 0,
+    "image": "/images/parts/4-tubing.png"
+  },
+  {
+    "name": "Cryogenic Break",
+    "price": "110",
+    "description": "",
+    "funded": 0,
+    "image": "/images/parts/cryogenic-break.png"
   }
 ]

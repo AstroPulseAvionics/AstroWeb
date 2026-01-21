@@ -44,7 +44,24 @@ export default function ContactUs() {
         message,
       };
     });
+
+    const url = new URL(window.location.href);
+    url.searchParams.delete("sponsorPart");
+    url.searchParams.delete("sponsorAmount");
+    window.history.replaceState(null, "", url.pathname + url.hash);
   }, [sponsorAmount, sponsorPart]);
+
+  React.useEffect(() => {
+    if (!formState.succeeded) {
+      return;
+    }
+
+    setFields({
+      name: "",
+      email: "",
+      message: "",
+    });
+  }, [formState.succeeded]);
 
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email);
   const isFormComplete =

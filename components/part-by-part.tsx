@@ -112,9 +112,15 @@ export default function PartByPart() {
   const { ref } = useSectionInView("Part by Part", 0.1, "-35% 0px -45% 0px");
   const [hideFunded, setHideFunded] = React.useState(false);
   const [sortMode, setSortMode] = React.useState<
-    "name-asc" | "price-asc" | "price-desc"
-  >("name-asc");
+    "default" | "name-asc" | "price-asc" | "price-desc"
+  >("default");
   const [amounts, setAmounts] = React.useState<Record<string, string>>({});
+
+  const originalOrder = React.useMemo(() => {
+    return new Map(
+      sponsorshipParts.map((part, index) => [part.name, index])
+    );
+  }, []);
 
   const filteredParts = React.useMemo(() => {
     const matchesFilter = sponsorshipParts.filter((part) => {
@@ -126,6 +132,12 @@ export default function PartByPart() {
     });
 
     return matchesFilter.slice().sort((a, b) => {
+      if (sortMode === "default") {
+        return (
+          (originalOrder.get(a.name) ?? 0) -
+          (originalOrder.get(b.name) ?? 0)
+        );
+      }
       if (sortMode === "name-asc") {
         return a.name.localeCompare(b.name);
       }
@@ -143,9 +155,15 @@ export default function PartByPart() {
         return -1;
       }
 
-      return sortMode === "price-asc" ? priceA - priceB : priceB - priceA;
+      const priceSort =
+        sortMode === "price-asc" ? priceA - priceB : priceB - priceA;
+      if (priceSort !== 0) {
+        return priceSort;
+      }
+
+      return a.name.localeCompare(b.name);
     });
-  }, [hideFunded, sortMode]);
+  }, [hideFunded, originalOrder, sortMode]);
 
   const handleSponsor = (part: (typeof sponsorshipParts)[number]) => {
     const funding = getFundingStatus(part);
@@ -194,12 +212,14 @@ export default function PartByPart() {
                 onChange={(event) =>
                   setSortMode(
                     event.target.value as
+                      | "default"
                       | "name-asc"
                       | "price-asc"
                       | "price-desc"
                   )
                 }
               >
+                <option value="default">Default</option>
                 <option value="name-asc">Name (A-Z)</option>
                 <option value="price-asc">Price (Low to High)</option>
                 <option value="price-desc">Price (High to Low)</option>
