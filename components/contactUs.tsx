@@ -4,6 +4,7 @@ import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import { useSectionInView } from "@/lib/hooks";
 import SectionHeading from "@/components/section-heading";
+import { useSearchParams } from "next/navigation";
 
 export default function ContactUs() {
   const { ref } = useSectionInView("Contact");
@@ -13,6 +14,37 @@ export default function ContactUs() {
     email: "",
     message: "",
   });
+  const searchParams = useSearchParams();
+  const sponsorPart = searchParams.get("sponsorPart");
+  const sponsorAmount = searchParams.get("sponsorAmount");
+
+  React.useEffect(() => {
+    if (!sponsorPart) {
+      return;
+    }
+
+    setFields((prev) => {
+      const amountLine = sponsorAmount
+        ? `My intended contribution is $${sponsorAmount} CAD.`
+        : "";
+
+      const message = [
+        "Hi AstroPulse team,",
+        "",
+        `I’m interested in sponsoring the ${sponsorPart}.`,
+        amountLine,
+        "",
+        "Please let me know the next steps.",
+      ]
+        .filter(Boolean)
+        .join("\n");
+
+      return {
+        ...prev,
+        message,
+      };
+    });
+  }, [sponsorAmount, sponsorPart]);
 
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email);
   const isFormComplete =

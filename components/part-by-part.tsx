@@ -115,9 +115,6 @@ export default function PartByPart() {
     "name-asc" | "price-asc" | "price-desc"
   >("name-asc");
   const [amounts, setAmounts] = React.useState<Record<string, string>>({});
-  const [submittingPart, setSubmittingPart] = React.useState<string | null>(
-    null
-  );
 
   const filteredParts = React.useMemo(() => {
     const matchesFilter = sponsorshipParts.filter((part) => {
@@ -150,63 +147,25 @@ export default function PartByPart() {
     });
   }, [hideFunded, sortMode]);
 
-  const handleSponsor = async (part: (typeof sponsorshipParts)[number]) => {
+  const handleSponsor = (part: (typeof sponsorshipParts)[number]) => {
     const funding = getFundingStatus(part);
-    if (!funding.isAvailable || submittingPart) {
+    if (!funding.isAvailable) {
       return;
     }
 
-    const remaining =
-      funding.priceValue === null
-        ? null
-        : Math.max(funding.priceValue - funding.fundedValue, 0);
     const amountInput = amounts[part.name]?.trim();
-    let amountValue = amountInput ? Number(amountInput) : NaN;
-
-    if (!Number.isFinite(amountValue) || amountValue <= 0) {
-      if (remaining !== null && remaining > 0) {
-        amountValue = remaining;
-      } else {
-        window.alert("Enter a valid sponsorship amount.");
-        return;
-      }
+    const params = new URLSearchParams(window.location.search);
+    params.set("sponsorPart", part.name);
+    if (amountInput) {
+      params.set("sponsorAmount", amountInput);
+    } else {
+      params.delete("sponsorAmount");
     }
 
-    if (remaining !== null && amountValue > remaining) {
-      window.alert(
-        `Amount exceeds remaining balance (${formatCurrency(remaining)} CAD).`
-      );
-      return;
-    }
+    const nextUrl = `${window.location.pathname}?${params.toString()}#contact`;
+    window.history.replaceState(null, "", nextUrl);
 
-    setSubmittingPart(part.name);
-
-    try {
-      const response = await fetch("/api/stripe/create-checkout-session", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          partName: part.name,
-          amount: amountValue,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Unable to start checkout.");
-      }
-
-      const data = (await response.json()) as { url?: string };
-      if (data.url) {
-        window.location.href = data.url;
-        return;
-      }
-
-      throw new Error("Checkout URL missing.");
-    } catch (error) {
-      console.error(error);
-      window.alert("Unable to start checkout. Please try again.");
-      setSubmittingPart(null);
-    }
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -357,18 +316,14 @@ export default function PartByPart() {
                     <button
                       type="button"
                       onClick={() => void handleSponsor(part)}
-                      disabled={!funding.isAvailable || submittingPart === part.name}
+                      disabled={!funding.isAvailable}
                       className={`rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] transition ${
-                        funding.isAvailable && submittingPart !== part.name
+                        funding.isAvailable
                           ? "bg-orange-600 text-white hover:bg-orange-500"
                           : "cursor-not-allowed border border-white/10 text-neutral-500"
                       }`}
                     >
-                      {submittingPart === part.name
-                        ? "Redirecting..."
-                        : funding.isAvailable
-                        ? "Sponsor"
-                        : "Reserved"}
+                      {funding.isAvailable ? "Sponsor" : "Reserved"}
                     </button>
                   </div>
                 </div>
