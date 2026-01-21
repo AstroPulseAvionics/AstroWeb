@@ -30,10 +30,10 @@ export default function ContactUs() {
 
       const message = [
         "Hi AstroPulse team,",
-        "",
+        " ",
         `I’m interested in sponsoring the ${sponsorPart}.`,
         amountLine,
-        "",
+        " ",
         "Please let me know the next steps.",
       ]
         .filter(Boolean)
@@ -118,7 +118,7 @@ export default function ContactUs() {
           <label className="grid gap-2 text-sm text-neutral-300">
             Message
             <textarea
-              className="min-h-[140px] rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-orange-400 focus:outline-none"
+              className="min-h-[180px] rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-orange-400 focus:outline-none"
               name="message"
               placeholder="Tell us about your project..."
               required

@@ -303,7 +303,7 @@ export default function PartByPart() {
                         step="1"
                         inputMode="numeric"
                         placeholder={"$" + (!getPriceValue(part.price) ? 0 : getPriceValue(part.price) - funding.fundedValue) + " left!"}
-                        className="h-10 w-36 rounded-2xl border border-white/10 bg-black/40 px-3 text-xs font-semibold tracking-[0.2em] text-white placeholder:text-neutral-500 focus:border-orange-400 focus:outline-none sm:w-40"
+                        className="h-10 w-36 appearance-none rounded-2xl border border-white/10 bg-black/40 px-3 text-xs font-semibold tracking-[0.2em] text-white placeholder:text-neutral-500 focus:border-orange-400 focus:outline-none sm:w-40"
                         value={amounts[part.name] ?? ""}
                         onChange={(event) =>
                           setAmounts((prev) => ({
