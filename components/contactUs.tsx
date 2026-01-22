@@ -4,6 +4,7 @@ import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import { useSectionInView } from "@/lib/hooks";
 import SectionHeading from "@/components/section-heading";
+import { useSearchParams } from "next/navigation";
 
 export default function ContactUs() {
   const { ref } = useSectionInView("Contact");
@@ -13,6 +14,54 @@ export default function ContactUs() {
     email: "",
     message: "",
   });
+  const searchParams = useSearchParams();
+  const sponsorPart = searchParams.get("sponsorPart");
+  const sponsorAmount = searchParams.get("sponsorAmount");
+
+  React.useEffect(() => {
+    if (!sponsorPart) {
+      return;
+    }
+
+    setFields((prev) => {
+      const amountLine = sponsorAmount
+        ? `My intended contribution is $${sponsorAmount} CAD.`
+        : "";
+
+      const message = [
+        "Hi AstroPulse team,",
+        " ",
+        `I’m interested in sponsoring the ${sponsorPart}.`,
+        amountLine,
+        " ",
+        "Please let me know the next steps.",
+      ]
+        .filter(Boolean)
+        .join("\n");
+
+      return {
+        ...prev,
+        message,
+      };
+    });
+
+    const url = new URL(window.location.href);
+    url.searchParams.delete("sponsorPart");
+    url.searchParams.delete("sponsorAmount");
+    window.history.replaceState(null, "", url.pathname + url.hash);
+  }, [sponsorAmount, sponsorPart]);
+
+  React.useEffect(() => {
+    if (!formState.succeeded) {
+      return;
+    }
+
+    setFields({
+      name: "",
+      email: "",
+      message: "",
+    });
+  }, [formState.succeeded]);
 
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email);
   const isFormComplete =
@@ -86,7 +135,7 @@ export default function ContactUs() {
           <label className="grid gap-2 text-sm text-neutral-300">
             Message
             <textarea
-              className="min-h-[140px] rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-orange-400 focus:outline-none"
+              className="min-h-[180px] rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-neutral-500 focus:border-orange-400 focus:outline-none"
               name="message"
               placeholder="Tell us about your project..."
               required

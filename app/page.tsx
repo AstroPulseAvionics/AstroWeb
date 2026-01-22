@@ -1,7 +1,9 @@
+import React, { Suspense } from "react";
 import Intro from "@/components/intro";
 import {Shapes} from "@/components/Shapes";
 import About from "@/components/about";
 import Design from "@/components/design";
+import PartByPart from "@/components/part-by-part";
 import ProjectTimeline from "@/components/projectTimeline";
 import Team from "@/components/team";
 import ContactUs from "@/components/contactUs";
@@ -24,10 +26,13 @@ export default function Home() {
             <About/>
             <Design/>
             <ProjectTimeline/>
+            <PartByPart/>
             {/* <Projects/>
             <Skills/> */}
             <Team/>
-            <ContactUs/>
+            <Suspense fallback={null}>
+                <ContactUs/>
+            </Suspense>
             
 
         </main>
