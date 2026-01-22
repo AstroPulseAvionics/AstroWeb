@@ -6,8 +6,12 @@ import { useSectionInView } from "@/lib/hooks";
 import SectionHeading from "@/components/section-heading";
 import { useSearchParams } from "next/navigation";
 
-export default function ContactUs() {
-  const { ref } = useSectionInView("Contact");
+type ContactUsProps = {
+  disableSectionTracking?: boolean;
+};
+
+export default function ContactUs({ disableSectionTracking }: ContactUsProps) {
+  const { ref } = useSectionInView("Contact", 0.75, undefined, !disableSectionTracking);
   const [formState, handleSubmit] = useForm("xeejpjlr");
   const [fields, setFields] = React.useState({
     name: "",

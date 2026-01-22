@@ -10,7 +10,8 @@ export type SectionName = (typeof links)[number]["name"] | "Home";
 export function useSectionInView(
     sectionName: SectionName,
     threshold = 0.75,
-    rootMargin?: string
+    rootMargin?: string,
+    enabled = true
 ) {
     const { ref, inView } = useInView({
         threshold,
@@ -19,10 +20,10 @@ export function useSectionInView(
     const { setActiveSection } = useActiveSectionContext();
 
     useEffect(() => {
-        if (inView ) {
+        if (enabled && inView ) {
             setActiveSection(sectionName);
         }
-    }, [inView, setActiveSection, sectionName]);
+    }, [enabled, inView, setActiveSection, sectionName]);
 
     return {
         ref,

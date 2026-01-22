@@ -7,6 +7,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import websiteLogo from "@/public/images/astropulse.svg";
 import {useActiveSectionContext} from "@/context/active-section-context";
+import { usePathname } from "next/navigation";
 
 // <div
 //     className="bg-gradient-to-br from-teal-100 to-rose-100 h-full w-screen relative -z-10 blur-[10rem] ">
@@ -15,6 +16,7 @@ export default function Header() {
     const {activeSection, setActiveSection} = useActiveSectionContext()
     const [isScrolled, setIsScrolled] = React.useState(false)
     const [isMobileOpen, setIsMobileOpen] = React.useState(false)
+    const pathname = usePathname()
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -42,7 +44,7 @@ export default function Header() {
                 <nav className="mx-auto flex h-16 w-full items-center justify-between px-4 sm:h-20 sm:px-10 lg:px-16">
                     <Link
                         className="flex h-full items-center gap-3 text-white transition hover:text-orange-200"
-                        href="#home"
+                        href={pathname === "/" ? "#home" : "/"}
                         onClick={() => {
                             // setActiveSection("About")
                             setIsMobileOpen(false)
@@ -61,23 +63,32 @@ export default function Header() {
                     </Link>
 
                     <ul className="hidden flex-wrap items-center justify-end gap-3 text-[0.78rem] font-medium text-neutral-300 sm:flex sm:gap-6 sm:text-[0.9rem]">
-                        {links.map((link => (
+                        {links.map((link => {
+                            const isActive =
+                                activeSection === link.name ||
+                                (pathname === "/part-by-part" && link.hash === "/part-by-part");
+
+                            return (
                             <li className="relative" key={link.hash}>
                                 <Link
                                     className={clsx(
                                         "relative px-1 py-2 transition hover:text-white",
-                                        {"text-white": activeSection === link.name}
+                                        {"text-white": isActive}
                                     )}
-                                    href={link.hash}
+                                    href={
+                                        link.hash.startsWith("#") && pathname !== "/"
+                                            ? `/${link.hash}`
+                                            : link.hash
+                                    }
                                     onClick={() => setActiveSection(link.name)}
                                 >
                                     {link.name}
-                                    {link.name === activeSection && (
+                                    {isActive && (
                                         <span className="absolute -bottom-1 left-0 right-0 h-[2px] rounded-full bg-orange-500/90"></span>
                                     )}
                                 </Link>
                             </li>
-                        )))}
+                        )}))}
                     </ul>
 
                     <button
@@ -120,26 +131,35 @@ export default function Header() {
                     )}
                 >
                     <ul className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-4 text-sm font-medium text-neutral-200">
-                        {links.map((link => (
+                        {links.map((link => {
+                            const isActive =
+                                activeSection === link.name ||
+                                (pathname === "/part-by-part" && link.hash === "/part-by-part");
+
+                            return (
                             <li key={link.hash}>
                                 <Link
                                     className={clsx(
                                         "flex w-full items-center justify-between rounded-lg px-3 py-2 transition hover:bg-white/5 hover:text-white",
-                                        {"text-white": activeSection === link.name}
+                                        {"text-white": isActive}
                                     )}
-                                    href={link.hash}
+                                    href={
+                                        link.hash.startsWith("#") && pathname !== "/"
+                                            ? `/${link.hash}`
+                                            : link.hash
+                                    }
                                     onClick={() => {
                                         setActiveSection(link.name)
                                         setIsMobileOpen(false)
                                     }}
                                 >
                                     <span>{link.name}</span>
-                                    {link.name === activeSection && (
+                                    {isActive && (
                                         <span className="h-2 w-2 rounded-full bg-orange-500/90"></span>
                                     )}
                                 </Link>
                             </li>
-                        )))}
+                        )}))}
                     </ul>
                 </div>
                 </motion.div>

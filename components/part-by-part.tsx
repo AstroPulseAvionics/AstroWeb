@@ -109,7 +109,7 @@ function PartMedia({ name, image }: { name: string; image?: string }) {
 }
 
 export default function PartByPart() {
-  const { ref } = useSectionInView("Part by Part", 0.1, "-35% 0px -45% 0px");
+  const { ref } = useSectionInView("Part by Part", 0, "0px 0px -50% 0px");
   const [hideFunded, setHideFunded] = React.useState(false);
   const [sortMode, setSortMode] = React.useState<
     "default" | "name-asc" | "price-asc" | "price-desc"
@@ -202,7 +202,7 @@ export default function PartByPart() {
           Prices in CAD
         </p>
 
-        <div className="mt-8 inline-grid auto-cols-max grid-flow-col items-stretch gap-4">
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-stretch">
           <label className="flex h-full flex-col gap-2 rounded-3xl border border-white/10 bg-neutral-900/50 p-4 text-xs font-semibold uppercase tracking-[0.3em] text-neutral-400 sm:p-5">
             <span>Sort by</span>
             <span className="relative">
