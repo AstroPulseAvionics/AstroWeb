@@ -122,7 +122,8 @@
     "name": "Heater Wire Sleeve",
     "price": "60",
     "description": "",
-    "funded": 0
+    "funded": 0,
+    "image": "/images/parts/sleeving.png"
   },
   {
     "name": "Inner Pole",
