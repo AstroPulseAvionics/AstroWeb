@@ -15,7 +15,7 @@ if (!webhookSecret) {
 }
 
 const stripe = new Stripe(stripeSecret, {
-  apiVersion: "2024-04-10",
+  apiVersion: "2023-10-16",
 });
 
 export async function POST(request: Request) {
