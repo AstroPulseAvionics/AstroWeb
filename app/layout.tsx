@@ -14,7 +14,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "AstroPulse",
   icons: {
-    icon: "/images/LogoLetters.PNG",
+    icon: "/images/LogoLetters.png",
   },
 };
 

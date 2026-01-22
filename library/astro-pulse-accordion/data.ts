@@ -16,14 +16,14 @@ export const data: AccordionItemType[] = [
     title: "Thruster Design",
     description:
       "System level architecture defining the discharge chamber, magnetic circuit, and propellant path.",
-    imagePath: "/images/accordion/Hall%20Thruster%20Concept.PNG",
+    imagePath: "/images/accordion/Hall%20Thruster%20Concept.png",
   },
   {
     id: "cathode",
     title: "Cathode",
     description:
       "Electron emission system to provide electrons for ionization and neutralization.",
-    imagePath: "/images/accordion/Cathode.PNG",
+    imagePath: "/images/accordion/Cathode.png",
     mediaSize: "420px",
     mediaSizeLg: "640px",
     mediaMinSize: "260px",
@@ -34,7 +34,7 @@ export const data: AccordionItemType[] = [
     title: "Magnetic Field Design",
     description:
       "Field geometry tuned to maximize ionization efficiency.",
-    imagePath: "/images/accordion/Magnetic%20Circuit.PNG",
+    imagePath: "/images/accordion/Magnetic%20Circuit.png",
   },
   {
     id: "injector",
@@ -52,7 +52,7 @@ export const data: AccordionItemType[] = [
     title: "Power Processing Unit",
     description:
       "High voltage power conversion architecture for efficient, reliable thruster operation.",
-    imagePath: "/images/accordion/Electrical%20Sim.PNG",
+    imagePath: "/images/accordion/Electrical%20Sim.png",
   },
   {
     id: "orbital-mechanics-simulator",
