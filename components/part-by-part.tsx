@@ -195,8 +195,8 @@ export default function PartByPart() {
         />
 
         <p className="max-w-2xl text-sm text-neutral-300 sm:text-base">
-          Become part of the build. Choose a component to sponsor and help us
-          cover materials, machining, and test time.
+          Become part of the build. Choose to sponsor a component and help
+          fund the materials and critical hardware behind the system.
         </p>
         <p className="mt-3 text-xs uppercase tracking-[0.3em] text-neutral-500">
           Prices in CAD
