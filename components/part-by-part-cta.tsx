@@ -9,19 +9,19 @@ import { useSectionInView } from "@/lib/hooks";
 const exampleParts = [
   {
     name: "Anode Ring Isolator",
-    image: "/images/parts/anode-ring-isolator.png",
+    image: "/images/parts/anode-ring-isolator.PNG",
   },
   {
     name: "Thermoionic Emitter",
-    image: "/images/parts/thermionic-emitter.png",
+    image: "/images/parts/thermionic-emitter.PNG",
   },
   {
     name: "Inner Pole",
-    image: "/images/parts/inner-pole.png",
+    image: "/images/parts/inner-pole.PNG",
   },
   {
     name: "Thruster Cover",
-    image: "/images/parts/thruster-cover.png",
+    image: "/images/parts/thruster-cover.PNG",
   },
 ];
 

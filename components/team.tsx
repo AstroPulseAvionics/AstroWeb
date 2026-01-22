@@ -4,12 +4,12 @@ import React from "react";
 import Image from "next/image";
 import { useSectionInView } from "@/lib/hooks";
 import SectionHeading from "@/components/section-heading";
-import shivamPhoto from "@/public/images/team/Shivam.png";
-import gavinPhoto from "@/public/images/team/Gavin.png";
-import zachScottPhoto from "@/public/images/team/Zach Scott.png";
-import andrewPhoto from "@/public/images/team/Andrew.png";
-import gurnoorPhoto from "@/public/images/team/Gurnoor.png";
-import zachBlairPhoto from "@/public/images/team/Zach Blair.png";
+import shivamPhoto from "@/public/images/team/Shivam.PNG";
+import gavinPhoto from "@/public/images/team/Gavin.PNG";
+import zachScottPhoto from "@/public/images/team/Zach Scott.PNG";
+import andrewPhoto from "@/public/images/team/Andrew.PNG";
+import gurnoorPhoto from "@/public/images/team/Gurnoor.PNG";
+import zachBlairPhoto from "@/public/images/team/Zach Blair.PNG";
 
 const teamPlaceholders = [
   {

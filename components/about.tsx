@@ -3,7 +3,7 @@
 import React, {useEffect} from "react";
 import {motion} from "framer-motion";
 import Image from "next/image"
-import profilePic from '../public/images/profile_pic.png'
+import profilePic from '../public/images/profile_pic.PNG'
 import SectionHeading from "@/components/section-heading";
 import {useInView} from "react-intersection-observer";
 import {useActiveSectionContext} from "@/context/active-section-context";
