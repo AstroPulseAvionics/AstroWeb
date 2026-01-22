@@ -11,112 +11,112 @@
     "price": "40",
     "description": "SS 316",
     "funded": 40,
-    "image": "/images/parts/anode-ring.png"
+    "image": "/images/parts/anode-ring.PNG"
   },
   {
     "name": "Inner Insulation Tube",
     "price": "35",
     "description": "Alumina Ceramic",
     "funded": 0,
-    "image": "/images/parts/inner-insulation-tube.png"
+    "image": "/images/parts/inner-insulation-tube.PNG"
   },
   {
     "name": "Top Insulative Spacer",
     "price": "70",
     "description": "Alumina Ceramic",
     "funded": 0,
-    "image": "/images/parts/top-insulative-spacer.png"
+    "image": "/images/parts/top-insulative-spacer.PNG"
   },
   {
     "name": "Keeper Spacer",
     "price": "70",
     "description": "Alumina Ceramic",
     "funded": 0,
-    "image": "/images/parts/keeper-spacer.png"
+    "image": "/images/parts/keeper-spacer.PNG"
   },
   {
     "name": "Bottom Insulation Plate",
     "price": "70",
     "description": "Alumina Ceramic",
     "funded": 0,
-    "image": "/images/parts/bottom-insulation-plate.png"
+    "image": "/images/parts/bottom-insulation-plate.PNG"
   },
   {
     "name": "Keeper Wire Insulation Plate",
     "price": "70",
     "description": "Alumina Ceramic",
     "funded": 0,
-    "image": "/images/parts/keeper-wire-insulation-plate.png"
+    "image": "/images/parts/keeper-wire-insulation-plate.PNG"
   },
   {
     "name": "Bottom Insulation Tube",
     "price": "70",
     "description": "Alumina Ceramic",
     "funded": 0,
-    "image": "/images/parts/bottom-insulation-tube.png"
+    "image": "/images/parts/bottom-insulation-tube.PNG"
   },
   {
     "name": "Keeper Tube Spacer",
     "price": "70",
     "description": "Alumina Ceramic",
     "funded": 0,
-    "image": "/images/parts/keeper-tube-spacer.png"
+    "image": "/images/parts/keeper-tube-spacer.PNG"
   },
   {
     "name": "Cathode Keeper",
     "price": "130",
     "description": "Graphite",
     "funded": 0,
-    "image": "/images/parts/cathode-keeper.png"
+    "image": "/images/parts/cathode-keeper.PNG"
   },
   {
     "name": "Orifice Plate",
     "price": "30",
     "description": "Graphite",
     "funded": 0,
-    "image": "/images/parts/orifice-plate.png"
+    "image": "/images/parts/orifice-plate.PNG"
   },
   {
     "name": "Cathode Tube",
     "price": "70",
     "description": "Graphite",
     "funded": 0,
-    "image": "/images/parts/cathode-tube.png"
+    "image": "/images/parts/cathode-tube.PNG"
   },
   {
     "name": "Thermoionic Emitter",
     "price": "240",
     "description": "Lanthanum Hexaboride",
     "funded": 0,
-    "image": "/images/parts/thermionic-emitter.png"
+    "image": "/images/parts/thermionic-emitter.PNG"
   },
   {
     "name": "Bottom Mounting Plate",
     "price": "25",
     "description": "SS 316",
     "funded": 25,
-    "image": "/images/parts/bottom-mounting-plate.png"
+    "image": "/images/parts/bottom-mounting-plate.PNG"
   },
   {
     "name": "Cathode Tube Adapter",
     "price": "20",
     "description": "SS 316",
     "funded": 20,
-    "image": "/images/parts/cathode-tube-adapter.png"
+    "image": "/images/parts/cathode-tube-adapter.PNG"
   },
   {
     "name": "Keeper Insulation Tube",
     "price": "10",
     "description": "Alumina Ceramic",
     "funded": 0,
-    "image": "/images/parts/keeper-insulation-tube.png"
+    "image": "/images/parts/keeper-insulation-tube.PNG"
   },
   {
     "name": "Heater Wire",
     "price": "115",
     "description": "",
     "funded": 0,
-    "image": "/images/parts/heater-coil.png"
+    "image": "/images/parts/heater-coil.PNG"
   },
   {
     "name": "Heater Wire Sleeve",
@@ -129,28 +129,28 @@
     "price": "180",
     "description": "1018 Steel",
     "funded": 180,
-    "image": "/images/parts/inner-pole.png"
+    "image": "/images/parts/inner-pole.PNG"
   },
   {
     "name": "Outer Focusing Pole",
     "price": "30",
     "description": "1018 Steel",
     "funded": 30,
-    "image": "/images/parts/outer-focusing-pole.png"
+    "image": "/images/parts/outer-focusing-pole.PNG"
   },
   {
     "name": "Outer Core Ring",
     "price": "60",
     "description": "1018 Steel",
     "funded": 60,
-    "image": "/images/parts/outer-core-ring.png"
+    "image": "/images/parts/outer-core-ring.PNG"
   },
   {
     "name": "Inner Magnetic Shield",
     "price": "20",
     "description": "1018 Steel",
     "funded": 20,
-    "image": "/images/parts/inner-magnetic-shield.png"
+    "image": "/images/parts/inner-magnetic-shield.PNG"
   },
   {
     "name": "Outer Magnetic Shield",
@@ -164,56 +164,56 @@
     "price": "20",
     "description": "SS 316",
     "funded": 20,
-    "image": "/images/parts/square-magnet-holder.png"
+    "image": "/images/parts/square-magnet-holder.PNG"
   },
   {
     "name": "Magnetic Shield Retaining Ring",
     "price": "25",
     "description": "SS 316",
     "funded": 25,
-    "image": "/images/parts/magnetic-shield-retaining-ring.png"
+    "image": "/images/parts/magnetic-shield-retaining-ring.PNG"
   },
   {
     "name": "Inner Magnetic Shield Retaining Ring",
     "price": "20",
     "description": "SS 316",
     "funded": 20,
-    "image": "/images/parts/inner-magnetic-shield-retaining-ring.png"
+    "image": "/images/parts/inner-magnetic-shield-retaining-ring.PNG"
   },
   {
     "name": "Ceramic Top Cover",
     "price": "70",
     "description": "Alumina Ceramic",
     "funded": 0,
-    "image": "/images/parts/ceramic-top-cover.png"
+    "image": "/images/parts/ceramic-top-cover.PNG"
   },
   {
     "name": "Copper Mounting Plate",
     "price": "1",
     "description": "Copper",
     "funded": 1,
-    "image": "/images/parts/copper-mounting-plate.png"
+    "image": "/images/parts/copper-mounting-plate.PNG"
   },
   {
     "name": "Inner Channel Wall",
     "price": "25",
     "description": "SS 316",
     "funded": 25,
-    "image": "/images/parts/inner-wall.png"
+    "image": "/images/parts/inner-wall.PNG"
   },
   {
     "name": "Outer Channel Wall",
     "price": "25",
     "description": "SS 316",
     "funded": 25,
-    "image": "/images/parts/outer-channel-wall.png"
+    "image": "/images/parts/outer-channel-wall.PNG"
   },
   {
     "name": "Thruster Cover",
     "price": "25",
     "description": "SS 316",
     "funded": 25,
-    "image": "/images/parts/thruster-cover.png"
+    "image": "/images/parts/thruster-cover.PNG"
   },
   {
     "name": "PPU PCB",
