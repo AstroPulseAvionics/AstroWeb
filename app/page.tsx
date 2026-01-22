@@ -1,3 +1,4 @@
+import React, { Suspense } from "react";
 import Intro from "@/components/intro";
 import {Shapes} from "@/components/Shapes";
 import About from "@/components/about";
@@ -29,7 +30,9 @@ export default function Home() {
             {/* <Projects/>
             <Skills/> */}
             <Team/>
-            <ContactUs/>
+            <Suspense fallback={null}>
+                <ContactUs/>
+            </Suspense>
             
 
         </main>
