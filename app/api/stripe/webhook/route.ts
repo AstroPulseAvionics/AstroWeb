@@ -4,7 +4,7 @@ import Stripe from "stripe";
 import { updatePartFunding } from "@/lib/part-by-part-store";
 
 const stripeSecret = process.env.STRIPE_SECRET_KEY;
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET ?? "";
 
 if (!stripeSecret) {
   throw new Error("STRIPE_SECRET_KEY is not set.");
