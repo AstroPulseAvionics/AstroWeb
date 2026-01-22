@@ -67,7 +67,7 @@
     "price": "130",
     "description": "Graphite",
     "funded": 0,
-    "image": "/images/parts/cathode-keeper.png"
+    "image": "/images/parts/cathode-shell.png"
   },
   {
     "name": "Orifice Plate",
@@ -114,7 +114,7 @@
   {
     "name": "Heater Wire",
     "price": "115",
-    "description": "",
+    "description": "Tungsten",
     "funded": 0,
     "image": "/images/parts/heater-coil.png"
   },
@@ -189,9 +189,9 @@
   },
   {
     "name": "Copper Mounting Plate",
-    "price": "1",
+    "price": "171",
     "description": "Copper",
-    "funded": 1,
+    "funded": 171,
     "image": "/images/parts/copper-mounting-plate.png"
   },
   {
@@ -288,56 +288,56 @@
   {
     "name": "2 Reducing Union Tube Fittings",
     "price": "60",
-    "description": "Swagelok Plumbing Equipment",
+    "description": "Plumbing Equipment",
     "funded": 0,
     "image": "/images/parts/reducing-union.png"
   },
   {
     "name": "Dielectric Union Tube Fitting",
     "price": "210",
-    "description": "Swagelok Plumbing Equipment",
+    "description": "Plumbing Equipment",
     "funded": 0,
     "image": "/images/parts/dielectric-union.png"
   },
   {
     "name": "Union Cross Tube Fitting",
     "price": "110",
-    "description": "Swagelok Plumbing Equipment",
+    "description": "Plumbing Equipment",
     "funded": 0,
     "image": "/images/parts/union-cross.png"
   },
   {
     "name": "4 Union Tube Fittings",
     "price": "110",
-    "description": "Swagelok Plumbing Equipment",
+    "description": "Plumbing Equipment",
     "funded": 0,
     "image": "/images/parts/union.png"
   },
   {
     "name": "1/4 in. Male Connector Tube Fitting",
     "price": "20",
-    "description": "Swagelok Plumbing Equipment",
+    "description": "Plumbing Equipment",
     "funded": 0,
     "image": "/images/parts/big-male-connector.png"
   },
   {
     "name": "1/8 in. Male Connector Tube Fitting",
     "price": "20",
-    "description": "Swagelok Plumbing Equipment",
+    "description": "Plumbing Equipment",
     "funded": 0,
     "image": "/images/parts/big-male-connector.png"
   },
   {
     "name": "2 Tee Pipe Fittings",
     "price": "130",
-    "description": "Swagelok Plumbing Equipment",
+    "description": "Plumbing Equipment",
     "funded": 0,
     "image": "/images/parts/2tee.png"
   },
   {
     "name": "4 Hex Long Nipple Pipe Fittings",
     "price": "155",
-    "description": "Swagelok Plumbing Equipment",
+    "description": "Plumbing Equipment",
     "funded": 0,
     "image": "/images/parts/hex-long-nipple.png"
   },

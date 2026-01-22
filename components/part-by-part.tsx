@@ -116,6 +116,23 @@ export default function PartByPart() {
   >("default");
   const [amounts, setAmounts] = React.useState<Record<string, string>>({});
 
+  const aggregateFunding = React.useMemo(() => {
+    return sponsorshipParts.reduce(
+      (totals, part) => {
+        const priceValue = getPriceValue(part.price);
+        const fundedValue = typeof part.funded === "number" ? part.funded : 0;
+
+        if (priceValue !== null) {
+          totals.totalPrice += priceValue;
+          totals.totalFunded += fundedValue;
+        }
+
+        return totals;
+      },
+      { totalPrice: 0, totalFunded: 0 }
+    );
+  }, []);
+
   const originalOrder = React.useMemo(() => {
     return new Map(
       sponsorshipParts.map((part, index) => [part.name, index])
@@ -165,6 +182,17 @@ export default function PartByPart() {
     });
   }, [hideFunded, originalOrder, sortMode]);
 
+  const totalProgress =
+    aggregateFunding.totalPrice > 0
+      ? Math.min(
+          100,
+          Math.max(
+            0,
+            (aggregateFunding.totalFunded / aggregateFunding.totalPrice) * 100
+          )
+        )
+      : 0;
+
   const handleSponsor = (part: (typeof sponsorshipParts)[number]) => {
     const funding = getFundingStatus(part);
     if (!funding.isAvailable) {
@@ -194,7 +222,30 @@ export default function PartByPart() {
           title="Sponsor a Part"
         />
 
-        <p className="max-w-2xl text-sm text-neutral-300 sm:text-base">
+        <div className="mt-4 rounded-3xl border border-white/10 bg-neutral-900/70 p-5 shadow-[0_20px_45px_rgba(0,0,0,0.35)] sm:p-6">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-neutral-400">
+                Total Funding Progress
+              </p>
+              <p className="mt-2 text-lg font-semibold text-white">
+                ${formatCurrency(aggregateFunding.totalFunded)} / $
+                {formatCurrency(aggregateFunding.totalPrice)}
+              </p>
+            </div>
+            <p className="text-xs text-neutral-500">
+              {Math.round(totalProgress)}% funded overall
+            </p>
+          </div>
+          <div className="mt-4 h-3 w-full rounded-full bg-white/10">
+            <div
+              className="h-3 rounded-full bg-orange-500 transition-all"
+              style={{ width: `${totalProgress}%` }}
+            />
+          </div>
+        </div>
+
+        <p className="mt-6 max-w-2xl text-sm text-neutral-300 sm:text-base">
           Become part of the build. Choose to sponsor a component and help
           fund the materials and critical hardware behind the system.
         </p>
