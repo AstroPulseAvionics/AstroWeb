@@ -6,6 +6,7 @@ import React from "react";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import { Analytics } from '@vercel/analytics/react';
 import Footer from "@/components/footer";
+import ScrollRestoration from "@/components/scroll-restoration";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -28,6 +29,7 @@ export default function RootLayout({
 
 
       <ActiveSectionContextProvider>
+          <ScrollRestoration />
           <Header/>
           {children}
           <Footer/>

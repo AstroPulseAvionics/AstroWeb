@@ -17,7 +17,7 @@ export const links = [{
     },
     {
         name: "Part by Part",
-        hash: "#part-by-part",
+        hash: "/part-by-part",
     },
     {
         name: "Team",
