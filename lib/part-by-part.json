@@ -287,20 +287,6 @@
     "image": "/images/parts/permanent-square-magnets.png"
   },
   {
-    "name": "2 Reducing Union Tube Fittings",
-    "price": "60",
-    "description": "Plumbing Equipment",
-    "funded": 0,
-    "image": "/images/parts/reducing-union.png"
-  },
-  {
-    "name": "Dielectric Union Tube Fitting",
-    "price": "210",
-    "description": "Plumbing Equipment",
-    "funded": 0,
-    "image": "/images/parts/dielectric-union.png"
-  },
-  {
     "name": "Union Cross Tube Fitting",
     "price": "110",
     "description": "Plumbing Equipment",
@@ -308,22 +294,15 @@
     "image": "/images/parts/union-cross.png"
   },
   {
-    "name": "4 Union Tube Fittings",
-    "price": "110",
+    "name": "8 Union Tube Fittings",
+    "price": "216",
     "description": "Plumbing Equipment",
     "funded": 0,
     "image": "/images/parts/union.png"
   },
   {
-    "name": "1/4 in. Male Connector Tube Fitting",
-    "price": "20",
-    "description": "Plumbing Equipment",
-    "funded": 0,
-    "image": "/images/parts/big-male-connector.png"
-  },
-  {
-    "name": "1/8 in. Male Connector Tube Fitting",
-    "price": "20",
+    "name": "2 1/8 in. Male Connector Tube Fitting",
+    "price": "40",
     "description": "Plumbing Equipment",
     "funded": 0,
     "image": "/images/parts/big-male-connector.png"
@@ -355,13 +334,6 @@
     "description": "McMaster Carr Plumbing Equipment",
     "funded": 0,
     "image": "/images/parts/8-tubing.png"
-  },
-  {
-    "name": "1/4 in. Tubing",
-    "price": "45",
-    "description": "McMaster Carr Plumbing Equipment",
-    "funded": 0,
-    "image": "/images/parts/4-tubing.png"
   },
   {
     "name": "Cryogenic Break",
