@@ -218,7 +218,7 @@
   },
   {
     "name": "PPU PCB",
-    "price": "300",
+    "price": "100",
     "description": "Electric Circuit",
     "funded": 0,
     "image": "/images/parts/pcb.png"
@@ -232,7 +232,7 @@
   },
   {
     "name": "Electrical Components",
-    "price": "50",
+    "price": "350",
     "description": "",
     "funded": 0,
     "image": "/images/parts/electrical-components.png"
