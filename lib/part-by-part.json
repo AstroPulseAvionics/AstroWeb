@@ -87,7 +87,7 @@
     "name": "Thermoionic Emitter",
     "price": "240",
     "description": "Lanthanum Hexaboride",
-    "funded": 0,
+    "funded": 240,
     "image": "/images/parts/thermionic-emitter.png"
   },
   {
