@@ -66,21 +66,21 @@
     "name": "Cathode Keeper",
     "price": "130",
     "description": "Graphite",
-    "funded": 0,
+    "funded": 130,
     "image": "/images/parts/cathode-shell.png"
   },
   {
     "name": "Orifice Plate",
     "price": "30",
     "description": "Graphite",
-    "funded": 0,
+    "funded": 30,
     "image": "/images/parts/orifice-plate.png"
   },
   {
     "name": "Cathode Tube",
     "price": "70",
     "description": "Graphite",
-    "funded": 0,
+    "funded": 70,
     "image": "/images/parts/cathode-tube.png"
   },
   {
@@ -217,6 +217,13 @@
     "image": "/images/parts/thruster-cover.png"
   },
   {
+    "name": "Thruster Hardware",
+    "price": "30",
+    "description": "",
+    "funded": 0,
+    "image": "/images/parts/bolt.png"
+  },
+  {
     "name": "PPU PCB",
     "price": "100",
     "description": "Electric Circuit",
@@ -227,7 +234,7 @@
     "name": "Transformer",
     "price": "150",
     "description": "Electric Circuit",
-    "funded": 0,
+    "funded": 150,
     "image": "/images/parts/transformer.png"
   },
   {
@@ -262,14 +269,14 @@
     "name": "Ceramabond Alumina Adhesive",
     "price": "170",
     "description": "",
-    "funded": 0,
+    "funded": 170,
     "image": "/images/parts/alumina-adhesive.png"
   },
   {
     "name": "Ceramabond Graphite Adhesive",
     "price": "190",
     "description": "",
-    "funded": 0,
+    "funded": 190,
     "image": "/images/parts/alumina-adhesive.png"
   },
   {
@@ -325,7 +332,7 @@
     "name": "Welding Gas Hose",
     "price": "30",
     "description": "McMaster Carr Plumbing Equipment",
-    "funded": 0,
+    "funded": 30,
     "image": "/images/parts/welding-gas-hose.png"
   },
   {
@@ -341,5 +348,12 @@
     "description": "",
     "funded": 0,
     "image": "/images/parts/cryogenic-break.png"
+  },
+  {
+    "name": "Teflon Plate",
+    "price": "60",
+    "description": "Test Fixture Equipment",
+    "funded": 0,
+    "image": "/images/parts/teflon-plate.png"
   }
 ]
