@@ -115,7 +115,7 @@
     "name": "Heater Wire",
     "price": "115",
     "description": "Tungsten",
-    "funded": 0,
+    "funded": 115,
     "image": "/images/parts/heater-coil.png"
   },
   {
@@ -227,7 +227,7 @@
     "name": "PPU PCB",
     "price": "100",
     "description": "Electric Circuit",
-    "funded": 0,
+    "funded": 100,
     "image": "/images/parts/pcb.png"
   },
   {
