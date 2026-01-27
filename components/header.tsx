@@ -65,8 +65,8 @@ export default function Header() {
                     <ul className="hidden flex-wrap items-center justify-end gap-3 text-[0.78rem] font-medium text-neutral-300 sm:flex sm:gap-6 sm:text-[0.9rem]">
                         {links.map((link => {
                             const isActive =
-                                activeSection === link.name ||
-                                (pathname === "/part-by-part" && link.hash === "/part-by-part");
+                                (!link.hash.startsWith("#") && pathname === link.hash) ||
+                                (pathname === "/" && activeSection === link.name);
 
                             return (
                             <li className="relative" key={link.hash}>
@@ -133,8 +133,8 @@ export default function Header() {
                     <ul className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-4 text-sm font-medium text-neutral-200">
                         {links.map((link => {
                             const isActive =
-                                activeSection === link.name ||
-                                (pathname === "/part-by-part" && link.hash === "/part-by-part");
+                                (!link.hash.startsWith("#") && pathname === link.hash) ||
+                                (pathname === "/" && activeSection === link.name);
 
                             return (
                             <li key={link.hash}>

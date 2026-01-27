@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import SectionHeading from "@/components/section-heading";
 import { useSectionInView } from "@/lib/hooks";
+import sponsors from "@/lib/sponsors.json";
 
 const exampleParts = [
   {
@@ -25,6 +26,8 @@ const exampleParts = [
   },
 ];
 
+const sponsorLogos = sponsors.slice(0, 6);
+
 export default function PartByPartCta() {
   const { ref } = useSectionInView("Part by Part", 0.3);
 
@@ -36,7 +39,7 @@ export default function PartByPartCta() {
           title="Sponsor a Part"
         />
         <div className="rounded-3xl border border-white/10 bg-neutral-900/70 px-6 pb-6 pt-4 shadow-[0_20px_45px_rgba(0,0,0,0.35)] sm:px-8 sm:pb-8 sm:pt-5">
-          <p className="mt-2 max-w-2xl text-sm text-neutral-300 sm:text-base">
+          <p className="mt-6 max-w-2xl text-sm text-neutral-300 sm:text-base">
             Explore the parts list, see funding progress, and sponsor a component
             directly from the full Part by Part page.
           </p>
@@ -61,12 +64,49 @@ export default function PartByPartCta() {
               </div>
             ))}
           </div>
-          <div className="mt-6">
+          {sponsorLogos.length > 0 && (
+            <div className="mt-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-neutral-400">
+                Join our growing list of sponsors
+              </p>
+              <div className="mt-4 flex flex-wrap items-center gap-4">
+                {sponsorLogos.map((sponsor) => (
+                  <div
+                    key={sponsor.name}
+                    className="rounded-2xl border border-white/10 bg-black/40 p-3"
+                  >
+                    <div
+                      className={`relative h-12 w-32 rounded-2xl p-2 transition ${
+                        sponsor.whiteBackground
+                          ? "bg-white/95 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.6)]"
+                          : "opacity-85"
+                      }`}
+                    >
+                      <Image
+                        src={sponsor.logo}
+                        alt={`${sponsor.name} logo`}
+                        fill
+                        sizes="128px"
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          <div className="mt-6 flex flex-wrap items-center gap-3">
             <Link
               href="/part-by-part"
               className="inline-flex items-center rounded-full bg-orange-600 px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-orange-500"
             >
               View Parts
+            </Link>
+            <Link
+              href="/sponsors"
+              className="inline-flex items-center rounded-full border border-white/15 bg-transparent px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:border-white/30 hover:bg-white/5"
+            >
+              View Sponsors
             </Link>
           </div>
         </div>

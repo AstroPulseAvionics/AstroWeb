@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useSectionInView } from "@/lib/hooks";
 import SectionHeading from "@/components/section-heading";
 import sponsorshipParts from "@/lib/part-by-part.json";
@@ -245,10 +246,18 @@ export default function PartByPart() {
           </div>
         </div>
 
-        <p className="mt-6 max-w-2xl text-sm text-neutral-300 sm:text-base">
-          Become part of the build. Choose to sponsor a component and help
-          fund the materials and critical hardware behind the system.
-        </p>
+        <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-2xl text-sm text-neutral-300 sm:text-base">
+            Become part of the build. Choose to sponsor a component and help
+            fund the materials and critical hardware behind the system.
+          </p>
+          <Link
+            href="/sponsors"
+            className="inline-flex items-center justify-center rounded-full border border-white/15 bg-transparent px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:border-white/30 hover:bg-white/5"
+          >
+            View Sponsors
+          </Link>
+        </div>
         <p className="mt-3 text-xs uppercase tracking-[0.3em] text-neutral-500">
           Prices in CAD
         </p>
