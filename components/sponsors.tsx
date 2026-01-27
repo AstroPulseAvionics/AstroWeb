@@ -47,20 +47,18 @@ export default function Sponsors() {
         )}
 
         <div className="mt-12">
-          <h3 className="text-lg font-semibold text-white">
+          <h3 className="text-2xl font-semibold text-white">
             Thank you to the following individuals for their support
           </h3>
           {individuals.length === 0 ? (
-            <p className="mt-3 text-sm text-neutral-300">
+            <p className="mt-3 text-lg text-neutral-300">
               Personal contributor names will appear here.
             </p>
           ) : (
-            <div className="mt-4 flex flex-wrap gap-2 text-sm text-neutral-200">
+            <div className="mt-4 flex flex-col gap-3 text-lg text-neutral-200">
               {individuals.map((name) => (
-                <span
-                  key={name}
-                  className="rounded-full border border-white/10 bg-neutral-900/70 px-4 py-2"
-                >
+                <span key={name} className="flex items-center gap-2">
+                  <span className="h-1 w-1 rounded-full bg-orange-400/70" />
                   {name}
                 </span>
               ))}
