@@ -10,5 +10,11 @@
     "logo": "/images/sponsors/MQCC_logo.png",
     "url": "https://mqcc.org/",
     "whiteBackground": true
+  },
+  {
+    "name": "MPF",
+    "logo": "/images/sponsors/MPF_logo.svg",
+    "url": "https://mpfpi.com/",
+    "whiteBackground": false
   }
 ]

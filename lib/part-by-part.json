@@ -344,9 +344,9 @@
   },
   {
     "name": "Cryogenic Break",
-    "price": "110",
+    "price": "200",
     "description": "",
-    "funded": 0,
+    "funded": 200,
     "image": "/images/parts/cryogenic-break.png"
   },
   {
