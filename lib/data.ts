@@ -54,21 +54,21 @@ export const experiencesData = [
     },
     {
         name: "Design & Simulation",
-        location: "Nearing Completion",
+        location: "Completed",
         description:
             "Magnetic, thermal, CFD, and circuit modeling (SolidWorks, Ansys, OpenFOAM, PLECS).",
         icon: React.createElement(MdRocketLaunch),
         date: "Oct 2025 - Jan 2026",
-        isCurrent: true,
+        isCurrent: false,
     },
     {
         name: "Manufacturing",
-        location: "Upcoming",
+        location: "In Progress",
         description:
             "Prototype via 3D printing; machining with lathe/mill, CNC, water-jet, furnace, metal 3D print.",
         icon: React.createElement(MdRocketLaunch),
         date: "Jan – Mar 2026",
-        isCurrent: false,
+        isCurrent: true,
     },
     {
         name: "Testing",
