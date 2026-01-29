@@ -27,19 +27,30 @@ export default function Sponsors() {
                 className="group flex items-center justify-center rounded-3xl border border-white/10 bg-gradient-to-br from-neutral-900 via-black/70 to-black/90 p-6 shadow-[0_20px_45px_rgba(0,0,0,0.35)] transition hover:border-white/20 sm:p-8"
               >
                 <div
-                  className={`relative h-24 w-full max-w-[220px] rounded-2xl p-2 transition ${
+                  className={`relative h-24 w-full max-w-[220px] rounded-2xl transition ${
                     sponsor.whiteBackground
                       ? "bg-white/95 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.6)]"
                       : "bg-gradient-to-br from-neutral-900 via-black/70 to-black/90 opacity-85 group-hover:opacity-100"
                   }`}
                 >
-                  <Image
-                    src={sponsor.logo}
-                    alt={`${sponsor.name} logo`}
-                    fill
-                    sizes="(max-width: 640px) 220px, 260px"
-                    className="object-contain"
-                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      padding: sponsor.logoPadding
+                        ? `${sponsor.logoPadding}px`
+                        : "8px",
+                    }}
+                  >
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={sponsor.logo}
+                        alt={`${sponsor.name} logo`}
+                        fill
+                        sizes="(max-width: 640px) 220px, 260px"
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
                 </div>
               </a>
             ))}

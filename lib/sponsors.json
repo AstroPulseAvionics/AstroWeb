@@ -16,5 +16,18 @@
     "logo": "/images/sponsors/MPF_logo.svg",
     "url": "https://mpfpi.com/",
     "whiteBackground": false
+  },
+  {
+    "name": "Hy-Lok",
+    "logo": "/images/sponsors/hy-lok.png",
+    "url": "https://www.hylok.ca/",
+    "whiteBackground": false
+  },
+  {
+    "name": "Graphite Store",
+    "logo": "/images/sponsors/graphite_logo.png",
+    "url": "https://www.graphitestore.com",
+    "whiteBackground": true,
+    "logoPadding": 14
   }
 ]
