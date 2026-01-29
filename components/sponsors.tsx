@@ -3,10 +3,14 @@
 import React from "react";
 import Image from "next/image";
 import SectionHeading from "@/components/section-heading";
-import sponsors from "@/lib/sponsors.json";
-import individuals from "@/lib/individual-supporters.json";
+import type { IndividualRecord, SponsorRecord } from "@/lib/dynamodb";
 
-export default function Sponsors() {
+type SponsorsProps = {
+  sponsors: SponsorRecord[];
+  individuals: IndividualRecord[];
+};
+
+export default function Sponsors({ sponsors, individuals }: SponsorsProps) {
   return (
     <section className="w-full scroll-mt-28 pt-20">
       <div className="mx-auto max-w-6xl px-6 sm:px-10 lg:px-16">
@@ -67,10 +71,10 @@ export default function Sponsors() {
             </p>
           ) : (
             <div className="mt-4 flex flex-col gap-3 text-lg text-neutral-200">
-              {individuals.map((name) => (
-                <span key={name} className="flex items-center gap-2">
+              {individuals.map((person) => (
+                <span key={person.name} className="flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-orange-400/70" />
-                  {name}
+                  {person.name}
                 </span>
               ))}
             </div>

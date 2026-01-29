@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import SectionHeading from "@/components/section-heading";
 import { useSectionInView } from "@/lib/hooks";
-import sponsors from "@/lib/sponsors.json";
+import type { SponsorRecord } from "@/lib/dynamodb";
 
 const exampleParts = [
   {
@@ -26,10 +26,13 @@ const exampleParts = [
   },
 ];
 
-const sponsorLogos = sponsors.slice(0, 6);
+type PartByPartCtaProps = {
+  sponsors: SponsorRecord[];
+};
 
-export default function PartByPartCta() {
+export default function PartByPartCta({ sponsors }: PartByPartCtaProps) {
   const { ref } = useSectionInView("Part by Part", 0.3);
+  const sponsorLogos = sponsors.slice(0, 6);
 
   return (
     <section id="part-by-part" ref={ref} className="w-full scroll-mt-28 pt-20">

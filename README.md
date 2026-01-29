@@ -30,6 +30,10 @@ Set the following environment variables (for local development use `.env.local`)
 STRIPE_SECRET_KEY=sk_test_...
 STRIPE_WEBHOOK_SECRET=whsec_...
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
+AWS_REGION=ca-central-1
+DDB_PARTS_TABLE=AstroPulseParts
+DDB_SPONSORS_TABLE=AstroPulseSponsors
+DDB_INDIVIDUALS_TABLE=AstroPulseIndividuals
 ```
 
 To test webhooks locally, use the Stripe CLI:
@@ -39,6 +43,30 @@ stripe login
 stripe listen --forward-to http://localhost:3000/api/stripe/webhook
 ```
 
-The webhook updates `lib/part-by-part.json` to track funded totals. This file-based
-storage is intended for local/dev only; for production you should store funding
-data in a database or external service.
+The webhook updates DynamoDB to track funded totals.
+
+## DynamoDB Tables (Console Setup)
+
+Create three tables in the AWS Console (DynamoDB):
+
+1. `AstroPulseParts` (partition key: `name` as String)
+2. `AstroPulseSponsors` (partition key: `name` as String)
+3. `AstroPulseIndividuals` (partition key: `name` as String)
+
+Recommended attributes per item:
+
+- Parts: `name`, `price`, `description`, `funded`, `image`, `order`
+- Sponsors: `name`, `logo`, `url`, `whiteBackground`, `logoPadding`, `order`
+- Individuals: `name`, `order`
+
+For default ordering, populate the `order` number field.
+
+## Seeding DynamoDB From JSON
+
+This script reads `lib/part-by-part.json`, `lib/sponsors.json`, and
+`lib/individual-supporters.json` and writes them to DynamoDB, adding an `order`
+field based on the JSON list order.
+
+```bash
+npm run seed:dynamodb
+```

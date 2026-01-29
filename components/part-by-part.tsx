@@ -5,11 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSectionInView } from "@/lib/hooks";
 import SectionHeading from "@/components/section-heading";
-import sponsorshipParts from "@/lib/part-by-part.json";
+import type { PartRecord } from "@/lib/dynamodb";
 
 const getPriceValue = (price: string) => {
   const value = Number(price);
-  return Number.isFinite(value) && value > 0 ? value : 0;
+  return Number.isFinite(value) && value > 0 ? value : null;
 };
 
 const formatCurrency = (value: number) =>
@@ -29,6 +29,10 @@ const getFundingStatus = (part: { price: string; funded?: number }) => {
     progress,
     isAvailable: priceValue === null || fundedValue < priceValue,
   };
+};
+
+type PartByPartProps = {
+  parts: PartRecord[];
 };
 
 function PartSketch() {
@@ -109,16 +113,21 @@ function PartMedia({ name, image }: { name: string; image?: string }) {
   );
 }
 
-export default function PartByPart() {
+export default function PartByPart({ parts }: PartByPartProps) {
+  const normalizedParts = React.useMemo(() => parts ?? [], [parts]);
   const { ref } = useSectionInView("Part by Part", 0, "0px 0px -50% 0px");
   const [hideFunded, setHideFunded] = React.useState(false);
   const [sortMode, setSortMode] = React.useState<
     "default" | "name-asc" | "price-asc" | "price-desc"
   >("default");
   const [amounts, setAmounts] = React.useState<Record<string, string>>({});
+  const [submittingPart, setSubmittingPart] = React.useState<string | null>(
+    null
+  );
+  const [expandedPart, setExpandedPart] = React.useState<string | null>(null);
 
   const aggregateFunding = React.useMemo(() => {
-    return sponsorshipParts.reduce(
+    return normalizedParts.reduce(
       (totals, part) => {
         const priceValue = getPriceValue(part.price);
         const fundedValue = typeof part.funded === "number" ? part.funded : 0;
@@ -132,16 +141,16 @@ export default function PartByPart() {
       },
       { totalPrice: 0, totalFunded: 0 }
     );
-  }, []);
+  }, [normalizedParts]);
 
   const originalOrder = React.useMemo(() => {
     return new Map(
-      sponsorshipParts.map((part, index) => [part.name, index])
+      normalizedParts.map((part, index) => [part.name, index])
     );
-  }, []);
+  }, [normalizedParts]);
 
   const filteredParts = React.useMemo(() => {
-    const matchesFilter = sponsorshipParts.filter((part) => {
+    const matchesFilter = normalizedParts.filter((part) => {
       const funding = getFundingStatus(part);
       if (hideFunded && !funding.isAvailable) {
         return false;
@@ -194,7 +203,66 @@ export default function PartByPart() {
         )
       : 0;
 
-  const handleSponsor = (part: (typeof sponsorshipParts)[number]) => {
+  const handleSponsor = async (part: PartRecord) => {
+    const funding = getFundingStatus(part);
+    if (!funding.isAvailable || submittingPart) {
+      return;
+    }
+
+    const amountInput = amounts[part.name]?.trim();
+    const remaining =
+      funding.priceValue === null
+        ? null
+        : Math.max(funding.priceValue - funding.fundedValue, 0);
+    let amountValue = amountInput ? Number(amountInput) : NaN;
+
+    if (!Number.isFinite(amountValue) || amountValue <= 0) {
+      if (remaining !== null && remaining > 0) {
+        amountValue = remaining;
+      } else {
+        window.alert("Enter a valid sponsorship amount.");
+        return;
+      }
+    }
+
+    if (remaining !== null && amountValue > remaining) {
+      window.alert(
+        `Amount exceeds remaining balance (${formatCurrency(remaining)} CAD).`
+      );
+      return;
+    }
+
+    setSubmittingPart(part.name);
+
+    try {
+      const response = await fetch("/api/stripe/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          partName: part.name,
+          amount: amountValue,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to start checkout.");
+      }
+
+      const data = (await response.json()) as { url?: string };
+      if (data.url) {
+        window.location.href = data.url;
+        return;
+      }
+
+      throw new Error("Checkout URL missing.");
+    } catch (error) {
+      console.error(error);
+      window.alert("Unable to start checkout. Please try again.");
+      setSubmittingPart(null);
+    }
+  };
+
+  const handleContactUs = (part: PartRecord) => {
     const funding = getFundingStatus(part);
     if (!funding.isAvailable) {
       return;
@@ -211,7 +279,6 @@ export default function PartByPart() {
 
     const nextUrl = `${window.location.pathname}?${params.toString()}#contact`;
     window.history.replaceState(null, "", nextUrl);
-
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -393,18 +460,46 @@ export default function PartByPart() {
                         }
                       />
                     )}
-                    <button
-                      type="button"
-                      onClick={() => void handleSponsor(part)}
-                      disabled={!funding.isAvailable}
-                      className={`rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] transition ${
-                        funding.isAvailable
-                          ? "bg-orange-600 text-white hover:bg-orange-500"
-                          : "cursor-not-allowed border border-white/10 text-neutral-500"
-                      }`}
-                    >
-                      {funding.isAvailable ? "Sponsor" : "Reserved"}
-                    </button>
+                    {funding.isAvailable && expandedPart === part.name ? (
+                      <div className="flex flex-wrap items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => void handleSponsor(part)}
+                          disabled={submittingPart === part.name}
+                          className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] transition ${
+                            submittingPart === part.name
+                              ? "cursor-not-allowed border border-white/10 text-neutral-500"
+                              : "bg-orange-600 text-white hover:bg-orange-500"
+                          }`}
+                        >
+                          {submittingPart === part.name ? "Redirecting..." : "Credit"}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleContactUs(part)}
+                          className="rounded-full border border-white/15 bg-transparent px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:border-white/30 hover:bg-white/5"
+                        >
+                          Contact Us
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => setExpandedPart(part.name)}
+                        disabled={!funding.isAvailable || submittingPart === part.name}
+                        className={`rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] transition ${
+                          funding.isAvailable && submittingPart !== part.name
+                            ? "bg-orange-600 text-white hover:bg-orange-500"
+                            : "cursor-not-allowed border border-white/10 text-neutral-500"
+                        }`}
+                      >
+                        {submittingPart === part.name
+                          ? "Redirecting..."
+                          : funding.isAvailable
+                          ? "Sponsor"
+                          : "Reserved"}
+                      </button>
+                    )}
                   </div>
                 </div>
                 {funding.priceValue !== null && (

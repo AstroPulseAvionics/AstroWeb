@@ -7,9 +7,13 @@ import PartByPartCta from "@/components/part-by-part-cta";
 import ProjectTimeline from "@/components/projectTimeline";
 import Team from "@/components/team";
 import ContactUs from "@/components/contactUs";
+import { getSponsors } from "@/lib/dynamodb";
 
+export const dynamic = "force-dynamic";
 
-export default function Home() {
+export default async function Home() {
+    const sponsors = await getSponsors();
+
     return (
         <main className="flex flex-col items-center justify-center">
             <div
@@ -26,7 +30,7 @@ export default function Home() {
             <About/>
             <Design/>
             <ProjectTimeline/>
-            <PartByPartCta/>
+            <PartByPartCta sponsors={sponsors} />
             {/* <Projects/>
             <Skills/> */}
             <Team/>
