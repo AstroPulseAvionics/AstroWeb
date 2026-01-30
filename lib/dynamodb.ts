@@ -1,7 +1,12 @@
 import "server-only";
 
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { DynamoDBDocumentClient, ScanCommand, UpdateCommand } from "@aws-sdk/lib-dynamodb";
+import {
+  DynamoDBDocumentClient,
+  PutCommand,
+  ScanCommand,
+  UpdateCommand,
+} from "@aws-sdk/lib-dynamodb";
 
 const region = process.env.AWS_REGION;
 const partsTable = process.env.DDB_PARTS_TABLE;
@@ -9,16 +14,18 @@ const sponsorsTable = process.env.DDB_SPONSORS_TABLE;
 const individualsTable = process.env.DDB_INDIVIDUALS_TABLE;
 const eventsTable = process.env.DDB_EVENTS_TABLE;
 
-if (!region) {
-  throw new Error("AWS_REGION is not set.");
-}
+const getDocClient = () => {
+  if (!region) {
+    throw new Error("AWS_REGION is not set.");
+  }
 
   if (!partsTable || !sponsorsTable || !individualsTable || !eventsTable) {
     throw new Error("DynamoDB table env vars are not set.");
   }
 
-const client = new DynamoDBClient({ region });
-const docClient = DynamoDBDocumentClient.from(client);
+  const client = new DynamoDBClient({ region });
+  return DynamoDBDocumentClient.from(client);
+};
 
 export type PartRecord = {
   name: string;
@@ -44,6 +51,7 @@ export type IndividualRecord = {
 };
 
 export async function getParts() {
+  const docClient = getDocClient();
   const data = await docClient.send(
     new ScanCommand({
       TableName: partsTable,
@@ -62,6 +70,7 @@ export async function getParts() {
 }
 
 export async function getSponsors() {
+  const docClient = getDocClient();
   const data = await docClient.send(
     new ScanCommand({
       TableName: sponsorsTable,
@@ -80,6 +89,7 @@ export async function getSponsors() {
 }
 
 export async function getIndividuals() {
+  const docClient = getDocClient();
   const data = await docClient.send(
     new ScanCommand({
       TableName: individualsTable,
@@ -102,6 +112,7 @@ export async function updatePartFunding(partName: string, amount: number) {
     throw new Error("Invalid funding amount.");
   }
 
+  const docClient = getDocClient();
   const result = await docClient.send(
     new UpdateCommand({
       TableName: partsTable,
