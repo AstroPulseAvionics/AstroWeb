@@ -190,7 +190,7 @@ export default function PartByPart({ parts }: PartByPartProps) {
 
       return a.name.localeCompare(b.name);
     });
-  }, [hideFunded, originalOrder, sortMode]);
+  }, [hideFunded, normalizedParts, originalOrder, sortMode]);
 
   const totalProgress =
     aggregateFunding.totalPrice > 0
@@ -444,12 +444,18 @@ export default function PartByPart({ parts }: PartByPartProps) {
                       </div>
                     )}
                     {funding.isAvailable && (
+                      (() => {
+                        const remainingValue =
+                          (getPriceValue(part.price) ?? 0) - funding.fundedValue;
+                        const remainingLabel = Math.max(0, remainingValue);
+
+                        return (
                       <input
                         type="number"
                         min="1"
                         step="1"
                         inputMode="numeric"
-                        placeholder={"$" + (!getPriceValue(part.price) ? 0 : getPriceValue(part.price) - funding.fundedValue) + " left!"}
+                        placeholder={`$${remainingLabel} left!`}
                         className="h-10 w-36 appearance-none rounded-2xl border border-white/10 bg-black/40 px-3 text-xs font-semibold tracking-[0.2em] text-white placeholder:text-neutral-500 focus:border-orange-400 focus:outline-none sm:w-40"
                         value={amounts[part.name] ?? ""}
                         onChange={(event) =>
@@ -459,6 +465,8 @@ export default function PartByPart({ parts }: PartByPartProps) {
                           }))
                         }
                       />
+                        );
+                      })()
                     )}
                     {funding.isAvailable && expandedPart === part.name ? (
                       <div className="flex flex-wrap items-center gap-2">
