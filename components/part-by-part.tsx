@@ -480,7 +480,7 @@ export default function PartByPart({ parts }: PartByPartProps) {
                               : "bg-orange-600 text-white hover:bg-orange-500"
                           }`}
                         >
-                          {submittingPart === part.name ? "Redirecting..." : "Credit"}
+                          {submittingPart === part.name ? "Redirecting..." : "Pay Online"}
                         </button>
                         <button
                           type="button"
