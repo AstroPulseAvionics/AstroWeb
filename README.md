@@ -34,6 +34,7 @@ AWS_REGION=ca-central-1
 DDB_PARTS_TABLE=AstroPulseParts
 DDB_SPONSORS_TABLE=AstroPulseSponsors
 DDB_INDIVIDUALS_TABLE=AstroPulseIndividuals
+DDB_EVENTS_TABLE=AstroPulseWebhookEvents
 ```
 
 To test webhooks locally, use the Stripe CLI:
@@ -52,6 +53,7 @@ Create three tables in the AWS Console (DynamoDB):
 1. `AstroPulseParts` (partition key: `name` as String)
 2. `AstroPulseSponsors` (partition key: `name` as String)
 3. `AstroPulseIndividuals` (partition key: `name` as String)
+4. `AstroPulseWebhookEvents` (partition key: `id` as String)
 
 Recommended attributes per item:
 

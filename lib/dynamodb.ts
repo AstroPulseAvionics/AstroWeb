@@ -7,14 +7,15 @@ const region = process.env.AWS_REGION;
 const partsTable = process.env.DDB_PARTS_TABLE;
 const sponsorsTable = process.env.DDB_SPONSORS_TABLE;
 const individualsTable = process.env.DDB_INDIVIDUALS_TABLE;
+const eventsTable = process.env.DDB_EVENTS_TABLE;
 
 if (!region) {
   throw new Error("AWS_REGION is not set.");
 }
 
-if (!partsTable || !sponsorsTable || !individualsTable) {
-  throw new Error("DynamoDB table env vars are not set.");
-}
+  if (!partsTable || !sponsorsTable || !individualsTable || !eventsTable) {
+    throw new Error("DynamoDB table env vars are not set.");
+  }
 
 const client = new DynamoDBClient({ region });
 const docClient = DynamoDBDocumentClient.from(client);
@@ -115,4 +116,27 @@ export async function updatePartFunding(partName: string, amount: number) {
   );
 
   return result.Attributes as PartRecord | undefined;
+}
+
+export async function recordWebhookEvent(eventId: string) {
+  const docClient = getDocClient();
+  if (!eventsTable) {
+    throw new Error("DDB_EVENTS_TABLE is not set.");
+  }
+
+  try {
+    await docClient.send(
+      new PutCommand({
+        TableName: eventsTable,
+        Item: {
+          id: eventId,
+          createdAt: new Date().toISOString(),
+        },
+        ConditionExpression: "attribute_not_exists(id)",
+      })
+    );
+    return true;
+  } catch (error) {
+    return false;
+  }
 }

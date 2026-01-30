@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { updatePartFunding } from "@/lib/dynamodb";
+import { recordWebhookEvent, updatePartFunding } from "@/lib/dynamodb";
 
 const stripeSecret = process.env.STRIPE_SECRET_KEY;
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET ?? "";
@@ -34,6 +34,11 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: "Invalid signature." }, { status: 400 });
+  }
+
+  const recorded = await recordWebhookEvent(event.id);
+  if (!recorded) {
+    return NextResponse.json({ received: true });
   }
 
   if (event.type === "checkout.session.completed") {
