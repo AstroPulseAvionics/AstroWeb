@@ -79,19 +79,30 @@ export default function PartByPartCta({ sponsors }: PartByPartCtaProps) {
                     className="rounded-2xl border border-white/10 bg-black/40 p-3"
                   >
                     <div
-                      className={`relative h-12 w-32 rounded-2xl p-2 transition ${
+                      className={`relative h-12 w-32 rounded-2xl transition ${
                         sponsor.whiteBackground
                           ? "bg-white/95 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.6)]"
                           : "opacity-85"
                       }`}
                     >
-                      <Image
-                        src={sponsor.logo}
-                        alt={`${sponsor.name} logo`}
-                        fill
-                        sizes="128px"
-                        className="object-contain"
-                      />
+                      <div
+                        className="absolute inset-0"
+                        style={{
+                          padding: sponsor.logoPadding
+                            ? `${Math.max(4, Math.round(sponsor.logoPadding * 0.6))}px`
+                            : "8px",
+                        }}
+                      >
+                        <div className="relative h-full w-full">
+                          <Image
+                            src={sponsor.logo}
+                            alt={`${sponsor.name} logo`}
+                            fill
+                            sizes="128px"
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}
