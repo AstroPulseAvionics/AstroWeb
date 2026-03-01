@@ -1,7 +1,11 @@
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { recordWebhookEvent, updatePartFunding } from "@/lib/dynamodb";
+import {
+  recordWebhookEvent,
+  updateGeneralFunding,
+  updatePartFunding,
+} from "@/lib/dynamodb";
 
 const stripeSecret = process.env.STRIPE_SECRET_KEY;
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET ?? "";
@@ -46,11 +50,15 @@ export async function POST(request: Request) {
     const partName = session.metadata?.partName;
     const amountTotal = session.amount_total ?? 0;
 
-    if (partName && amountTotal > 0) {
+    if (amountTotal > 0) {
       const amountCad = amountTotal / 100;
 
       try {
-        await updatePartFunding(partName, amountCad);
+        if (partName) {
+          await updatePartFunding(partName, amountCad);
+        } else {
+          await updateGeneralFunding(amountCad);
+        }
       } catch (error) {
         console.error(error);
         return NextResponse.json(
