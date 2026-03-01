@@ -17,13 +17,10 @@ export async function POST(request: Request) {
       partName?: string;
       amount?: number;
     };
-
-    if (!partName || typeof partName !== "string") {
-      return NextResponse.json(
-        { error: "Missing part name." },
-        { status: 400 }
-      );
-    }
+    const normalizedPartName =
+      typeof partName === "string" && partName.trim().length > 0
+        ? partName.trim()
+        : null;
 
     const amountValue = Number(amount);
     if (!Number.isFinite(amountValue) || amountValue <= 0) {
@@ -45,16 +42,16 @@ export async function POST(request: Request) {
           price_data: {
             currency: "cad",
             product_data: {
-              name: `Sponsor: ${partName}`,
+              name: normalizedPartName
+                ? `Sponsor: ${normalizedPartName}`
+                : "Custom Donation",
             },
             unit_amount: amountInCents,
           },
           quantity: 1,
         },
       ],
-      metadata: {
-        partName,
-      },
+      metadata: normalizedPartName ? { partName: normalizedPartName } : {},
       success_url: `${baseUrl}/?sponsor=success`,
       cancel_url: `${baseUrl}/?sponsor=cancel`,
     });

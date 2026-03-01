@@ -35,6 +35,8 @@ type PartByPartProps = {
   parts: PartRecord[];
 };
 
+const CUSTOM_DONATION_KEY = "__custom_donation__";
+
 function PartSketch() {
   return (
     <div className="relative h-28 w-[180px] flex-shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-neutral-900 via-black/70 to-black/90 sm:w-[200px]">
@@ -121,7 +123,7 @@ export default function PartByPart({ parts }: PartByPartProps) {
     "default" | "name-asc" | "price-asc" | "price-desc"
   >("default");
   const [amounts, setAmounts] = React.useState<Record<string, string>>({});
-  const [submittingPart, setSubmittingPart] = React.useState<string | null>(
+  const [submittingTarget, setSubmittingTarget] = React.useState<string | null>(
     null
   );
   const [expandedPart, setExpandedPart] = React.useState<string | null>(null);
@@ -203,9 +205,66 @@ export default function PartByPart({ parts }: PartByPartProps) {
         )
       : 0;
 
+  const startCheckout = async ({
+    amount,
+    partName,
+    targetKey,
+  }: {
+    amount: number;
+    partName?: string;
+    targetKey: string;
+  }) => {
+    setSubmittingTarget(targetKey);
+
+    try {
+      const response = await fetch("/api/stripe/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount,
+          ...(partName ? { partName } : {}),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to start checkout.");
+      }
+
+      const data = (await response.json()) as { url?: string };
+      if (data.url) {
+        window.location.href = data.url;
+        return;
+      }
+
+      throw new Error("Checkout URL missing.");
+    } catch (error) {
+      console.error(error);
+      window.alert("Unable to start checkout. Please try again.");
+      setSubmittingTarget(null);
+    }
+  };
+
+  const handleCustomDonation = async () => {
+    if (submittingTarget) {
+      return;
+    }
+
+    const amountValue = Number(amounts[CUSTOM_DONATION_KEY]?.trim());
+
+    if (!Number.isFinite(amountValue) || amountValue <= 0) {
+      window.alert("Enter a valid donation amount.");
+      return;
+    }
+
+    await startCheckout({
+      amount: amountValue,
+      targetKey: CUSTOM_DONATION_KEY,
+    });
+  };
+
   const handleSponsor = async (part: PartRecord) => {
     const funding = getFundingStatus(part);
-    if (!funding.isAvailable || submittingPart) {
+    if (!funding.isAvailable || submittingTarget) {
       return;
     }
 
@@ -232,34 +291,11 @@ export default function PartByPart({ parts }: PartByPartProps) {
       return;
     }
 
-    setSubmittingPart(part.name);
-
-    try {
-      const response = await fetch("/api/stripe/create-checkout-session", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          partName: part.name,
-          amount: amountValue,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Unable to start checkout.");
-      }
-
-      const data = (await response.json()) as { url?: string };
-      if (data.url) {
-        window.location.href = data.url;
-        return;
-      }
-
-      throw new Error("Checkout URL missing.");
-    } catch (error) {
-      console.error(error);
-      window.alert("Unable to start checkout. Please try again.");
-      setSubmittingPart(null);
-    }
+    await startCheckout({
+      amount: amountValue,
+      partName: part.name,
+      targetKey: part.name,
+    });
   };
 
   const handleContactUs = (part: PartRecord) => {
@@ -328,6 +364,54 @@ export default function PartByPart({ parts }: PartByPartProps) {
         <p className="mt-3 text-xs uppercase tracking-[0.3em] text-neutral-500">
           Prices in CAD
         </p>
+
+        <div className="mt-8 rounded-3xl border border-white/10 bg-neutral-900/70 p-5 shadow-[0_20px_45px_rgba(0,0,0,0.35)] sm:p-6">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-neutral-400">
+                Flexible Support
+              </p>
+              <h3 className="mt-2 text-2xl font-semibold text-white">
+                Make a custom donation
+              </h3>
+              <p className="mt-3 text-sm text-neutral-300 sm:text-base">
+                Contribute any amount even if you do not want to tie it to a
+                specific part.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <input
+                type="number"
+                min="1"
+                step="1"
+                inputMode="numeric"
+                placeholder="Enter amount"
+                className="h-11 w-full appearance-none rounded-2xl border border-white/10 bg-black/40 px-4 text-sm font-semibold text-white placeholder:text-neutral-500 focus:border-orange-400 focus:outline-none sm:w-44"
+                value={amounts[CUSTOM_DONATION_KEY] ?? ""}
+                onChange={(event) =>
+                  setAmounts((prev) => ({
+                    ...prev,
+                    [CUSTOM_DONATION_KEY]: event.target.value,
+                  }))
+                }
+              />
+              <button
+                type="button"
+                onClick={() => void handleCustomDonation()}
+                disabled={submittingTarget !== null}
+                className={`rounded-full px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] transition ${
+                  submittingTarget === null
+                    ? "bg-orange-600 text-white hover:bg-orange-500"
+                    : "cursor-not-allowed border border-white/10 text-neutral-500"
+                }`}
+              >
+                {submittingTarget === CUSTOM_DONATION_KEY
+                  ? "Redirecting..."
+                  : "Donate"}
+              </button>
+            </div>
+          </div>
+        </div>
 
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-stretch">
           <label className="flex h-full flex-col gap-2 rounded-3xl border border-white/10 bg-neutral-900/50 p-4 text-xs font-semibold uppercase tracking-[0.3em] text-neutral-400 sm:p-5">
@@ -473,14 +557,16 @@ export default function PartByPart({ parts }: PartByPartProps) {
                         <button
                           type="button"
                           onClick={() => void handleSponsor(part)}
-                          disabled={submittingPart === part.name}
+                          disabled={submittingTarget !== null}
                           className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] transition ${
-                            submittingPart === part.name
+                            submittingTarget !== null
                               ? "cursor-not-allowed border border-white/10 text-neutral-500"
                               : "bg-orange-600 text-white hover:bg-orange-500"
                           }`}
                         >
-                          {submittingPart === part.name ? "Redirecting..." : "Pay Online"}
+                          {submittingTarget === part.name
+                            ? "Redirecting..."
+                            : "Pay Online"}
                         </button>
                         <button
                           type="button"
@@ -494,14 +580,14 @@ export default function PartByPart({ parts }: PartByPartProps) {
                       <button
                         type="button"
                         onClick={() => setExpandedPart(part.name)}
-                        disabled={!funding.isAvailable || submittingPart === part.name}
+                        disabled={!funding.isAvailable || submittingTarget !== null}
                         className={`rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] transition ${
-                          funding.isAvailable && submittingPart !== part.name
+                          funding.isAvailable && submittingTarget === null
                             ? "bg-orange-600 text-white hover:bg-orange-500"
                             : "cursor-not-allowed border border-white/10 text-neutral-500"
                         }`}
                       >
-                        {submittingPart === part.name
+                        {submittingTarget === part.name
                           ? "Redirecting..."
                           : funding.isAvailable
                           ? "Sponsor"
