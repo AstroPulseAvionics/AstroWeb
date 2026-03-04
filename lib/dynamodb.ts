@@ -15,6 +15,7 @@ const sponsorsTable = process.env.DDB_SPONSORS_TABLE;
 const individualsTable = process.env.DDB_INDIVIDUALS_TABLE;
 const eventsTable = process.env.DDB_EVENTS_TABLE;
 const generalFundingKey = "__general_donations__";
+const generalProjectCostKey = "__general_project_cost__";
 
 const getDocClient = () => {
   if (!region) {
@@ -60,7 +61,8 @@ export async function getParts() {
     })
   );
   const items = (data.Items ?? []).filter(
-    (item) => item.name !== generalFundingKey
+    (item) =>
+      item.name !== generalFundingKey && item.name !== generalProjectCostKey
   ) as PartRecord[];
 
   return items.sort((a, b) => {
@@ -84,6 +86,29 @@ export async function getGeneralFunding() {
 
   const fundedValue = result.Item?.funded;
   return typeof fundedValue === "number" ? fundedValue : 0;
+}
+
+export async function getGeneralProjectCost() {
+  const docClient = getDocClient();
+  const result = await docClient.send(
+    new GetCommand({
+      TableName: partsTable,
+      Key: { name: generalProjectCostKey },
+    })
+  );
+
+  const priceValue = result.Item?.price;
+
+  if (typeof priceValue === "number" && Number.isFinite(priceValue)) {
+    return Math.max(0, priceValue);
+  }
+
+  if (typeof priceValue === "string") {
+    const parsed = Number(priceValue);
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
+  }
+
+  return 0;
 }
 
 export async function getSponsors() {

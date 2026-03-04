@@ -34,6 +34,7 @@ const getFundingStatus = (part: { price: string; funded?: number }) => {
 type PartByPartProps = {
   parts: PartRecord[];
   generalFunding?: number;
+  generalProjectCost?: number;
 };
 
 const CUSTOM_DONATION_KEY = "__custom_donation__";
@@ -119,6 +120,7 @@ function PartMedia({ name, image }: { name: string; image?: string }) {
 export default function PartByPart({
   parts,
   generalFunding = 0,
+  generalProjectCost = 0,
 }: PartByPartProps) {
   const normalizedParts = React.useMemo(() => parts ?? [], [parts]);
   const { ref } = useSectionInView("Part by Part", 0, "0px 0px -50% 0px");
@@ -145,9 +147,12 @@ export default function PartByPart({
 
         return totals;
       },
-      { totalPrice: 0, totalFunded: Math.max(0, generalFunding) }
+      {
+        totalPrice: Math.max(0, generalProjectCost),
+        totalFunded: Math.max(0, generalFunding),
+      }
     );
-  }, [generalFunding, normalizedParts]);
+  }, [generalFunding, generalProjectCost, normalizedParts]);
 
   const originalOrder = React.useMemo(() => {
     return new Map(
