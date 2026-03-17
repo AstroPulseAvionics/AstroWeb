@@ -63,7 +63,7 @@ export const experiencesData = [
     },
     {
         name: "Manufacturing",
-        location: "In Progress",
+        location: "Completed",
         description:
             "Prototype via 3D printing; machining with lathe/mill, CNC, water-jet, furnace, metal 3D print.",
         icon: React.createElement(MdRocketLaunch),
@@ -72,7 +72,7 @@ export const experiencesData = [
     },
     {
         name: "Testing",
-        location: "Upcoming",
+        location: "In Progress",
         description:
             "Subsystem tests (Faraday cups, Gauss probes), then vacuum-chamber system testing.",
         icon: React.createElement(MdRocketLaunch),
