@@ -68,7 +68,7 @@ export const experiencesData = [
             "Prototype via 3D printing; machining with lathe/mill, CNC, water-jet, furnace, metal 3D print.",
         icon: React.createElement(MdRocketLaunch),
         date: "Jan – Mar 2026",
-        isCurrent: true,
+        isCurrent: false,
     },
     {
         name: "Testing",
@@ -77,6 +77,6 @@ export const experiencesData = [
             "Subsystem tests (Faraday cups, Gauss probes), then vacuum-chamber system testing.",
         icon: React.createElement(MdRocketLaunch),
         date: "Mar – Apr 2026",
-        isCurrent: false,
+        isCurrent: true,
     },
 ] as const;
